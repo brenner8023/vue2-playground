@@ -93,7 +93,7 @@
 import { Icon } from "@iconify/vue2";
 import Preview from "./Preview.vue";
 import sizes from "../settings/screen-sizes.json";
-import OutputContainer from "../code-viewer/output-container.vue";
+import OutputContainer from "./output-container.vue";
 import Dropdown from "../dropdown/Dropdown.vue";
 import DropdownMenu from "../dropdown/DropdownMenu.vue";
 import DropdownItem from "../dropdown/DropdownItem.vue";

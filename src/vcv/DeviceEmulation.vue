@@ -22,7 +22,8 @@
   </div>
 </template>
 <script>
-import { debounce } from "throttle-debounce";
+// import { debounce } from "throttle-debounce";
+import { useDebounceFn } from "@vueuse/core";
 export default {
   components: {},
   props: {
@@ -38,10 +39,14 @@ export default {
   mounted() {
     window.addEventListener(
       "resize",
-      debounce(100, () => {
+      // debounce(100, () => {
+      //   console.log("dev emulator autoResize");
+      //   this.scale = this.calcScale();
+      // })
+      useDebounceFn(() => {
         console.log("dev emulator autoResize");
         this.scale = this.calcScale();
-      })
+      }, 100)
     );
 
     this.scale = this.calcScale();
@@ -92,11 +97,4 @@ export default {
   position: relative;
   background-color: var(--bg-device);
 }
-/* .test {
-  height: 600px;
-  background-color: rgba(45, 45, 45, 0.1);
-} */
-/* .test1 {
-  background-color: rgba(27, 27, 27, 1);
-} */
 </style>

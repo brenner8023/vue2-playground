@@ -1,14 +1,17 @@
+import { RouteConfig } from "vue-router";
+// import Demo from "../views/CompositionApi.vue";
 import Demo from "../views/REPL.vue";
+
 import sideNavConfig from "./side-nav.config.json";
 
 const lang = "zh-CN";
 
 // 组件侧边导航 路由注册
-const registerRoute = (navConfig) => {
-  let route = [];
+const registerRoute = (navConfig: any) => {
+  const route: any[] = [];
   // 多语言配置
   Object.keys(navConfig).forEach((lang, index) => {
-    let navs = navConfig[lang];
+    const navs = navConfig[lang];
     route.push({
       path: `/doc`,
       // 重定向
@@ -18,12 +21,12 @@ const registerRoute = (navConfig) => {
     });
 
     // 组件侧边导航
-    navs.forEach((nav) => {
+    navs.forEach((nav: any) => {
       // 存在外链 不做处理
       if (nav.href) return;
       // group  节点下页面导航
       if (nav.type === "group" && nav.children) {
-        nav.children.forEach((nav) => {
+        nav.children.forEach((nav: any) => {
           addRoute(nav, lang, index);
         });
       } else {
@@ -33,8 +36,8 @@ const registerRoute = (navConfig) => {
   });
 
   // 添加路由配置
-  function addRoute(page, lang, index) {
-    let child = {
+  function addRoute(page: any, lang: any, index: any) {
+    const child = {
       path: page.path.slice(1),
       meta: {
         title: page.title || page.name,
@@ -51,16 +54,16 @@ const registerRoute = (navConfig) => {
   return route;
 };
 
-const LOAD_Component = (path) => {
-  return (r) => require.ensure([], () => r(require(`@examples/${path}`)));
+const LOAD_Component = (path: string) => {
+  return (r: any) => require.ensure([], () => r(require(`@examples/${path}`)));
 };
 
-let route = [
+let route: Array<RouteConfig> = [
   {
     path: "/",
     name: "Home",
     // component: Demo,
-    component: () => import("@examples/pages/zh-CN/home.vue"),
+    component: () => import("../pages/zh-CN/home.vue"),
   },
   {
     path: "/repl",
@@ -75,7 +78,7 @@ let route = [
   },
 ];
 
-let sideRoutes = registerRoute(sideNavConfig);
+const sideRoutes: Array<RouteConfig> = registerRoute(sideNavConfig);
 route = route.concat(sideRoutes);
 
 export default route;

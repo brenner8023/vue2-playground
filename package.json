@@ -2,36 +2,42 @@
   "name": "vue-code-view",
   "version": "0.4.1",
   "description": "A Vue 2 component like Vue SFC REPL `@vue/repl` : u can edit, run and preview the code effect display in real time on the web page.",
-  "main": "lib/vue-code-viewer.common.js",
-  "unpkg": "lib/vue-code-viewer.umd.js",
+  "author": "andurils",
   "scripts": {
+    "lint": "vue-cli-service lint",
+    "type:check": "vue-tsc --noEmit",
+    "type:build": "vue-tsc --declaration --emitDeclarationOnly",
     "bootstrap": "cnpm i || yarn",
+    "clean": "rimraf node_modules",
+    "deploy:build": "vue-cli-service build --mode deploy",
     "dev": "vue-cli-service serve ",
     "dev:play": "vue-cli-service serve --mode play",
-    "dist": "vue-cli-service build  --mode production --target lib --name vue-code-viewer --dest lib src/index.js",
-    "deploy:build": "vue-cli-service build --mode deploy",
-    "lint": "vue-cli-service lint",
-    "clean": "rimraf node_modules"
+    "dist": "vue-cli-service build  --mode production --target lib --name vue-code-viewer --dest lib src/index.ts"
   },
+  "main": "lib/vue-code-viewer.common.js",
+  "unpkg": "lib/vue-code-viewer.umd.js",
   "dependencies": {
-    "codemirror": "^5.62.2",
     "deepmerge": "^4.2.2",
-    "throttle-debounce": "^3.0.1",
     "tiny-sass-compiler": "^0.12.2"
-  },
-  "peerDependencies": {
-    "vue": "^2.6.11"
   },
   "devDependencies": {
     "@iconify/vue2": "^1.1.3",
+    "@types/codemirror": "^5.60.2",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.15",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
+    "@vue/composition-api": "^1.4.9",
     "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "@vueuse/core": "^5.3.0",
     "ant-design-vue": "^1.7.8",
     "babel-eslint": "^10.1.0",
+    "codemirror": "^5.62.3",
     "compression-webpack-plugin": "^6.1.1",
     "core-js": "^3.6.5",
     "element-ui": "^2.15.5",
@@ -44,31 +50,37 @@
     "markdown-it-chain": "^1.3.0",
     "markdown-it-container": "^3.0.0",
     "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
     "sass": "^1.44.0",
     "sass-loader": "^8.0.2",
+    "typescript": "^4.6.2",
     "uglifyjs-webpack-plugin": "^2.2.0",
-    "vue": "^2.6.11",
+    "vue": "^2.6.14",
     "vue-loader": "^15.9.8",
     "vue-router": "^3.2.0",
-    "vue-template-compiler": "^2.6.11",
+    "vue-template-compiler": "^2.6.14",
+    "vue-tsc": "^0.32.1",
     "vuex": "^3.4.0"
   },
+  "peerDependencies": {
+    "vue": ">= 2.5 < 3"
+  },
+  "browserslist": [
+    "last 2 version",
+    "> 1%",
+    "not dead"
+  ],
+  "homepage": "https://andurils.github.io/vue-code-view",
   "keywords": [
     "vue",
     "components",
     "codemirror",
     "code editor"
   ],
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andurils/vue-code-view.git"
   },
-  "author": "andurils",
-  "license": "MIT",
-  "homepage": "https://andurils.github.io/vue-code-view",
-  "browserslist": [
-    "last 2 version",
-    "> 1%",
-    "not dead"
-  ]
+  "typings": "types/index.d.ts"
 }

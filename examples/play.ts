@@ -1,7 +1,5 @@
 import Vue from "vue";
-import App from "@examples/play/index.vue";
-import router from "@examples/router";
-import store from "@examples/store";
+import App from "@examples/views/Play.vue";
 
 import CodeViewer from "@/index";
 // import CodeViewer from "vue-code-view";
@@ -20,7 +18,5 @@ Vue.use(Antd);
 Vue.use(CodeViewer);
 
 new Vue({
-  router,
-  store,
   render: (h) => h(App),
 }).$mount("#app");

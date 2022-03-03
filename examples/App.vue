@@ -1,25 +1,21 @@
 <template>
   <div id="app" :class="{ 'is-component': isComponent }">
     <main-header :is-home="isHome"></main-header>
-    <div class="">
-      <router-view
-        :class="[
-          {
-            'markdown-body': $route.path === '/changelog',
-          },
-        ]"
-      ></router-view>
+    <div>
+      <router-view :class="{ 'markdown-body': isChangelog }"></router-view>
     </div>
     <!-- 首页显示 -->
     <main-footer v-if="isHome || isChangelog"></main-footer>
   </div>
 </template>
 
-<script>
-export default {
-  name: "app",
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({
+  name: "App",
   mounted() {
-    console.log(this.$route.path, this.$route.name);
+    // console.log(this.$route.path, this.$route.name);
   },
   computed: {
     isComponent() {
@@ -30,7 +26,6 @@ export default {
       return this.$route.path.indexOf("repl") > -1;
     },
     isChangelog() {
-      console.log(this.$route.name);
       return /^changelog/.test(this.$route.name || "");
     },
     isHome() {
@@ -38,7 +33,7 @@ export default {
       return this.$route.path.length <= 1;
     },
   },
-};
+});
 </script>
 
 <style>

@@ -1,7 +1,8 @@
 import Vue from "vue";
+import VueCompositionAPI from "@vue/composition-api";
 import App from "@examples/App.vue";
 // import router from "@/router";
-import store from "@examples/store";
+// import store from "@examples/store";
 
 import VueRouter from "vue-router";
 // 路由配置
@@ -10,7 +11,7 @@ import routes from "@examples/router";
 // 组件引入
 import CodeViewer from "@/index";
 // 国际化语言
-import locale from "@/locale/lang/en";
+// import locale from "../src/locale/lang/en";
 
 // UI组件库引入
 import Antd from "ant-design-vue";
@@ -19,10 +20,10 @@ import ElementUI from "element-ui";
 import hljs from "highlight.js";
 
 // 网站页面 模板页面组件
-import MainFooter from "./components/footer";
-import MainHeader from "./components/header";
-import FooterNav from "./components/footer-nav";
-import demoBlock from "./components/demo-block";
+import MainFooter from "@examples/components/footer.vue";
+import MainHeader from "@examples/components/header.vue";
+import FooterNav from "@examples/components/footer-nav.vue";
+import demoBlock from "@examples/components/demo-block.vue";
 
 // UI组件库样式引入
 import "ant-design-vue/dist/antd.css";
@@ -36,9 +37,11 @@ import "@assets/styles/index.scss";
 import "highlight.js/styles/a11y-dark.css";
 
 Vue.config.productionTip = false;
+Vue.use(VueCompositionAPI);
 Vue.use(VueRouter);
 
-Vue.use(CodeViewer, { locale }); // 国际化配置
+Vue.use(CodeViewer); // 国际化配置
+// Vue.use(CodeViewer, { locale }); // 国际化配置
 
 // 引入组件 element 2.x
 Vue.use(ElementUI);
@@ -61,13 +64,13 @@ router.afterEach((route) => {
   Vue.nextTick(() => {
     const blocks = document.querySelectorAll("pre code");
     blocks.forEach((block) => {
-      hljs.highlightElement(block);
+      hljs.highlightElement(block as HTMLElement);
     });
   });
 });
 
 new Vue({
   router,
-  store,
+  // store,
   render: (h) => h(App),
 }).$mount("#app");

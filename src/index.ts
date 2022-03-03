@@ -1,9 +1,9 @@
 import CodeViewer from "./vcv/VCV.vue";
-import locale from "./locale";
+// import locale from "./locale";
 
-const install = function (Vue, opts = {}) {
-  locale.use(opts.locale);
-  locale.i18n(opts.i18n);
+const install = function (Vue: any, opts = {}) {
+  // locale.use(opts.locale);
+  // locale.i18n(opts.i18n);
   Vue.component(CodeViewer.name, CodeViewer);
 };
 

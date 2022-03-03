@@ -1,5 +1,6 @@
 <script>
-import { debounce } from "throttle-debounce";
+// import { debounce } from "throttle-debounce";
+import { useDebounceFn } from "@vueuse/core";
 import { genStyleInjectionCode } from "../utils/sfcParser/styleInjection";
 import { isEmpty, extend } from "../utils/util";
 import { addStylesClient } from "../utils/style-loader/addStylesClient";
@@ -31,7 +32,12 @@ export default {
   },
   created() {
     // console.log("op created");
-    this.debounceErrorHandler = debounce(this.debounceDelay, this.errorHandler);
+    // this.debounceErrorHandler = debounce(this.debounceDelay, this.errorHandler);
+    this.debounceErrorHandler = useDebounceFn(
+      this.errorHandler,
+      this.debounceDelay
+    );
+
     this.stylesUpdateHandler = addStylesClient(this.viewId, {});
   },
   mounted() {

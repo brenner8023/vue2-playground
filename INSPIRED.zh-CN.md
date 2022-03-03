@@ -92,3 +92,10 @@ cnpm i --save-dev markdown-it markdown-it-anchor markdown-it-chain markdown-it-c
 
 <https://svgporn.com/>
 <https://simpleicons.org/>
+
+
+
+## 升级  TS API
+https://github.com/vueuse/vueuse-vue2-example
+https://github.com/vuejs/vue-docs-zh-cn/blob/master/vue-cli-plugin-typescript/README.md
+

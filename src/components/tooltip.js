@@ -1,5 +1,6 @@
+//TODO:TSX
 import Popper from "../utils/vue-popper";
-import { debounce } from "throttle-debounce";
+import { useDebounceFn } from "@vueuse/core";
 import { addClass, removeClass, on, off } from "../utils/dom";
 import { generateId } from "../utils/util";
 import Vue from "vue";
@@ -72,7 +73,8 @@ export default {
       },
     }).$mount();
 
-    this.debounceClose = debounce(200, () => this.handleClosePopper());
+    // this.debounceClose = debounce(200, () => this.handleClosePopper());
+    this.debounceClose = useDebounceFn(() => this.handleClosePopper(), 200);
   },
 
   render(h) {

@@ -4,14 +4,15 @@ import CodeEditor from "@/codemirror/CodeMirror.vue";
 import Output from "@/output/Output.vue";
 import { toggleClass } from "../utils/DOMhelper";
 import { isEmpty, generateId } from "../utils/util";
-import { debounce } from "throttle-debounce";
+// import { debounce } from "throttle-debounce";
+import { useDebounceFn } from "@vueuse/core";
 import Locale from "../mixins/locale";
 // import OutputContainer from "./output-container.vue";
 // import Toolbar from "./toolbar.vue";
 import SplitPane from "./SplitPane.vue";
 
 // 字体图标
-import "../fonts/iconfont.css";
+// import "../fonts/iconfont.css";
 import "../styles/tooltip.css";
 
 export default {
@@ -81,7 +82,8 @@ export default {
   },
 
   created() {
-    this.onChangeHandler = debounce(250, this.handleCodeChange);
+    // this.onChangeHandler = debounce(250, this.handleCodeChange);
+    this.onChangeHandler = useDebounceFn(this.handleCodeChange, 250);
   },
   mounted() {
     this.init();
@@ -156,7 +158,7 @@ export default {
         class={classNames(rootNames, this.themeMode, `${viewId}`)}
         style={this.calcHeight}
       >
-        <SplitPane isVertical={this.isVertical}>
+        <SplitPane layout={this.isVertical}>
           {/*-- output render  --*/}
           <template slot={this.outputSlot}>
             <Output
