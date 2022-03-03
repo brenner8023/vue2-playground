@@ -4,15 +4,10 @@ import CodeEditor from "@/codemirror/CodeMirror.vue";
 import Output from "@/output/Output.vue";
 import { toggleClass } from "../utils/DOMhelper";
 import { isEmpty, generateId } from "../utils/util";
-// import { debounce } from "throttle-debounce";
 import { useDebounceFn } from "@vueuse/core";
 import Locale from "../mixins/locale";
-// import OutputContainer from "./output-container.vue";
-// import Toolbar from "./toolbar.vue";
 import SplitPane from "./SplitPane.vue";
 
-// 字体图标
-// import "../fonts/iconfont.css";
 import "../styles/tooltip.css";
 
 export default {
@@ -29,24 +24,22 @@ export default {
       errorHandler: this.errorHandler,
       showCode: !this.isVertical || this.showCodeEditor,
       themeMode: this.themeMode,
-      // needAutoResize: this.needAutoResize,
+      needAutoResize: this.needAutoResize,
     };
   },
   components: {
     CodeEditor,
     Output,
-    // OutputContainer,
-    // Toolbar,
     SplitPane,
   },
   props: {
     source: { type: String },
     themeMode: { type: String }, // light||dark，默认 light
-    autoResize: { type: Boolean, default: true },
+    // autoResize: { type: Boolean, default: true },
     showCode: { type: Boolean, default: false },
     // renderToolbar: { type: Function },
     errorHandler: { type: Function },
-    // needAutoResize: { type: Boolean, default: true },
+    needAutoResize: { type: Boolean, default: true },
     debounceDelay: {
       type: Number,
       default: 300,

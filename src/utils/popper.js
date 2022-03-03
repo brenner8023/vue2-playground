@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-throw-literal */
-/* eslint-disable no-undef */
-// tooltips 提示插件
 /**
  * @fileOverview Kickass library to create and place poppers near their reference elements.
  * @version {{version}}

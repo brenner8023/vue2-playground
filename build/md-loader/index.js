@@ -1,5 +1,5 @@
-const { escapeBackticks } = require("./util");
-const md = require("./config");
+const { escapeBackticks } = require("./util.ts");
+const md = require("./config.ts");
 
 module.exports = function (source) {
   const content = md.render(source);

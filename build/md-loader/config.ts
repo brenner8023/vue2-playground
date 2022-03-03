@@ -1,6 +1,6 @@
 const Config = require("markdown-it-chain");
-const containers = require("./containers");
-const overWriteFenceRule = require("./fence");
+const containers = require("./containers.ts");
+const overWriteFenceRule = require("./fence.ts");
 
 const config = new Config();
 

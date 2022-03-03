@@ -1,62 +1,55 @@
-<script>
-import HomeBackground from "./home-background.vue";
+<template>
+  <div class="home-container">
+    <div class="home-banner">
+      <HomeBackground></HomeBackground>
+      <div class="home-banner-holder">
+        <div class="home-banner-content">
+          <div>
+            <div class="home-card-logo">Vue Code View</div>
+          </div>
+          <p>
+            一个基于 Vue
+            2，在网页中实时编辑运行代码、预览效果的轻量级代码交互组件。
+          </p>
+
+          <div class="home-banner-content-operations">
+            <a-button type="primary" shape="round" size="large">
+              <router-link to="/doc">开始使用</router-link>
+            </a-button>
+            <a-button shape="round" size="large" ghost>
+              <router-link to="/repl">在线示例</router-link>
+            </a-button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width: 1256px; margin: 0 auto">
+      <div class="home-block-content">
+        <HomeCard></HomeCard>
+      </div>
+    </div>
+
+    <div style="max-width: 1256px; margin: 0 auto">
+      <div class="home-block-content">
+        <HomeExample></HomeExample>
+      </div>
+    </div>
+  </div>
+</template>
+<script lang="ts">
+import { defineComponent, ref, computed } from "@vue/composition-api";
+import HomeBackground from "./HomeBackground.vue";
 import HomeCard from "./home-card.vue";
 import HomeExample from "./home-example.vue";
-export default {
+
+export default defineComponent({
   components: {
     HomeBackground,
     HomeCard,
     HomeExample,
   },
-  name: "Home",
-  data() {
-    return {};
-  },
-  mounted() {},
-  methods: {},
-
-  render() {
-    return (
-      <div class="home-container">
-        <div class="home-banner">
-          <HomeBackground></HomeBackground>
-          <div class="home-banner-holder">
-            <div class="home-banner-content">
-              <div>
-                <div class="home-card-logo">Vue Code View</div>
-              </div>
-              <p>
-                一个基于 Vue
-                2，在网页中实时编辑运行代码、预览效果的轻量级代码交互组件。
-              </p>
-
-              <div class="home-banner-content-operations">
-                <a-button type="primary" shape="round" size="large">
-                  <router-link to={"/doc"}>开始使用</router-link>
-                </a-button>
-                <a-button shape="round" size="large" ghost>
-                  <router-link to={"/repl"}>在线示例</router-link>
-                </a-button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div style=" max-width: 1256px; margin:  0 auto;">
-          <div class="home-block-content">
-            <HomeCard></HomeCard>
-          </div>
-        </div>
-
-        <div style=" max-width: 1256px; margin:  0 auto;">
-          <div class="home-block-content">
-            <HomeExample></HomeExample>
-          </div>
-        </div>
-      </div>
-    );
-  },
-};
+});
 </script>
 
 <style lang="scss" scoped>

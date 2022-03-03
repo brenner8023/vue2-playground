@@ -21,9 +21,7 @@ export default defineComponent({
   },
   setup(props, context) {
     const el = ref<HTMLElement | null>(null);
-    // TODO: update any type
-    const vcv: any = inject("vcv");
-    let needAutoResize = vcv.autoResize;
+    const needAutoResize: Boolean = inject("needAutoResize") as Boolean;
 
     onMounted(() => {
       const addonOptions = {
@@ -66,7 +64,7 @@ export default defineComponent({
         window.addEventListener(
           "resize",
           useDebounceFn(() => {
-            // console.log("code editor resize!");
+            console.log("code editor resize!");
             editor.refresh();
           }, 300)
         );

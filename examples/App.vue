@@ -15,7 +15,7 @@ import Vue from "vue";
 export default Vue.extend({
   name: "App",
   mounted() {
-    // console.log(this.$route.path, this.$route.name);
+    console.log("vcv site mounted");
   },
   computed: {
     isComponent() {
