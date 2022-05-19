@@ -1,12 +1,12 @@
 <script lang="ts">
-import { defineComponent } from "@vue/composition-api";
+import { defineComponent, ref } from "@vue/composition-api";
 import VPNavBarTitle from "./VPNavBarTitle.vue";
 // import VPNavBarSearch from "./VPNavBarSearch.vue";
 import _VPNavBarMenu from "./VPNavBarMenu.vue";
 import _VPNavBarAppearance from "./VPNavBarAppearance.vue";
 import _VPNavBarSocialLinks from "./VPNavBarSocialLinks.vue";
 import _VPNavBarExtra from "./VPNavBarExtra.vue";
-// import VPNavBarHamburger from "./VPNavBarHamburger.vue";
+import _VPNavBarHamburger from "./VPNavBarHamburger.vue";
 
 export default defineComponent({
   components: {
@@ -15,18 +15,17 @@ export default defineComponent({
     VPNavBarSocialLinks: _VPNavBarSocialLinks as any,
     VPNavBarExtra: _VPNavBarExtra as any,
     VPNavBarMenu: _VPNavBarMenu as any,
+    VPNavBarHamburger: _VPNavBarHamburger as any,
   },
   props: {
     isScreenOpen: {
       type: Boolean,
-      // required: true,
-      // default: "xxxxxxxxxxx",
     },
   },
   setup(props) {
+    // const isScreenOpen_tmp = ref<boolean>(true);
     return {
-      // isScreenOpen: props.isScreenOpen,
-      // msg,
+      // isScreenOpen_tmp,
     };
   },
 });
@@ -46,11 +45,11 @@ export default defineComponent({
         <VPNavBarAppearance class="appearance" />
         <VPNavBarSocialLinks class="social-links" />
         <VPNavBarExtra class="extra" />
-        <!-- <VPNavBarHamburger
+        <VPNavBarHamburger
           class="hamburger"
           :active="isScreenOpen"
           @click="$emit('toggle-screen')"
-        /> -->
+        />
       </div>
     </div>
   </div>

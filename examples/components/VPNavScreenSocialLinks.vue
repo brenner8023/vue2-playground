@@ -1,13 +1,14 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
-import _VCVSocialLinks from "./VCVSocialLinks.vue";
 import { useConfig } from "../composables/config";
+import _VCVSocialLinks from "./VCVSocialLinks.vue";
 
 export default defineComponent({
-  components: { VCVSocialLinks: _VCVSocialLinks as any },
+  components: {
+    VCVSocialLinks: _VCVSocialLinks as any,
+  },
   setup(props) {
     const { config } = useConfig();
-
     return {
       config,
     };
@@ -18,21 +19,8 @@ export default defineComponent({
 <template>
   <VCVSocialLinks
     v-if="config.socialLinks"
-    class="VPNavBarSocialLinks"
-    size="small"
+    class="VPNavScreenSocialLinks"
+    size="medium"
     :links="config.socialLinks"
   />
 </template>
-
-<style scoped>
-.VPNavBarSocialLinks {
-  display: none;
-  margin-right: -10px;
-}
-
-@media (min-width: 1280px) {
-  .VPNavBarSocialLinks {
-    display: flex;
-  }
-}
-</style>

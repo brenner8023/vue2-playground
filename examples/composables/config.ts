@@ -1,4 +1,5 @@
 import { NavItem, PageData } from "@examples/types/config";
+import { SocialLink } from "@examples/types/socialLink";
 
 import {
   computed,
@@ -14,7 +15,16 @@ export function useConfig() {
   return {
     config: {
       appearance: true,
-
+      socialLinks: [
+        {
+          icon: "github",
+          link: "https://github.com/andurils/vue-code-view",
+        },
+        {
+          icon: "languages",
+          link: "https://staging-cn.vuejs.org/guide/typescript/options-api.html#typing-component-props",
+        },
+      ] as SocialLink[],
       nav: [
         {
           text: "test1",

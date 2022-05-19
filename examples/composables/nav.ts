@@ -1,7 +1,8 @@
-import { ref } from "@vue/composition-api";
+import { ref, unref } from "@vue/composition-api";
 
 export function useNav() {
   const isScreenOpen = ref(false);
+  // const isScreenOpen = ref(true); // 测试
 
   function openScreen() {
     isScreenOpen.value = true;
@@ -14,6 +15,7 @@ export function useNav() {
   }
 
   function toggleScreen() {
+    console.log("toggleScreen", unref(isScreenOpen));
     isScreenOpen.value ? closeScreen() : openScreen();
   }
 
