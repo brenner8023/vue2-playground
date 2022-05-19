@@ -13,6 +13,12 @@ const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i;
 // 代码压缩
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
+// unplugin
+const ScriptSetup = require("unplugin-vue2-script-setup/webpack").default;
+// const Icons = require("unplugin-icons/webpack");
+// const IconsResolver = require("unplugin-icons/resolver");
+// const Components = require("unplugin-vue-components/webpack");
+
 module.exports = {
   // runtimeCompiler: true, // 是否使用包含运行时编译器的 Vue 构建版本
   publicPath: process.env.VUE_APP_PUBLIC_PATH || "/",
@@ -29,7 +35,21 @@ module.exports = {
         : "./examples/main.ts";
     config.resolveLoader.modules = ["node_modules", "./build/"]; // 自定义loader
 
-    const plugins = [];
+    // const plugins = [];
+    const plugins = [
+      ScriptSetup({
+        reactivityTransform: true,
+      }),
+      // new Icons({
+      //   compiler: "vue2",
+      // }),
+      // Components({
+      //   transformer: "vue2",
+      // }),
+      // tailwind
+      require("tailwindcss"),
+      require("autoprefixer"),
+    ];
 
     // 生产环境相关配置
     if (IS_PROD && process.env.VUE_APP_ENV === "pub") {

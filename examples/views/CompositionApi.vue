@@ -6,6 +6,9 @@
     <!-- 挂载DOM元素 -->
     <p ref="msg">留意该节点，有一个ref属性</p>
     <!-- 挂载DOM元素 -->
+
+    <button @click="toggleDark()">Is Dark: {{ isDark }}</button>
+    <!-- <VCVSwitchAppearance></VCVSwitchAppearance> -->
   </div>
 </template>
 
@@ -17,6 +20,9 @@ import {
   ref,
 } from "@vue/composition-api";
 import HW from "./Test.vue";
+// import VCVSwitchAppearance from "@examples/components/VCVSwitchAppearance.vue";
+
+import { useDark, useToggle } from "@vueuse/core";
 
 export default defineComponent({
   components: {
@@ -34,6 +40,14 @@ export default defineComponent({
     // 定义挂载节点，声明的类型详见下方附表
     const msg = ref<HTMLElement | null>(null);
 
+    const isDark = useDark({
+      selector: "body",
+      attribute: "class",
+      valueDark: "dark",
+      valueLight: "light",
+    });
+    const toggleDark = useToggle(isDark);
+
     onBeforeMount(() => {
       console.log(2);
     });
@@ -48,6 +62,8 @@ export default defineComponent({
     return {
       props,
       msg,
+      isDark,
+      toggleDark,
     };
   },
 });

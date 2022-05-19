@@ -1,0 +1,105 @@
+<script lang="ts">
+import { defineComponent } from "@vue/composition-api";
+import VPNavBarTitle from "./VPNavBarTitle.vue";
+// import VPNavBarSearch from "./VPNavBarSearch.vue";
+import _VPNavBarMenu from "./VPNavBarMenu.vue";
+import _VPNavBarAppearance from "./VPNavBarAppearance.vue";
+import _VPNavBarSocialLinks from "./VPNavBarSocialLinks.vue";
+import _VPNavBarExtra from "./VPNavBarExtra.vue";
+// import VPNavBarHamburger from "./VPNavBarHamburger.vue";
+
+export default defineComponent({
+  components: {
+    VPNavBarTitle,
+    VPNavBarAppearance: _VPNavBarAppearance as any,
+    VPNavBarSocialLinks: _VPNavBarSocialLinks as any,
+    VPNavBarExtra: _VPNavBarExtra as any,
+    VPNavBarMenu: _VPNavBarMenu as any,
+  },
+  props: {
+    isScreenOpen: {
+      type: Boolean,
+      // required: true,
+      // default: "xxxxxxxxxxx",
+    },
+  },
+  setup(props) {
+    return {
+      // isScreenOpen: props.isScreenOpen,
+      // msg,
+    };
+  },
+});
+</script>
+
+<template>
+  <div class="VPNavBar">
+    <div class="container">
+      <VPNavBarTitle>
+        <template #navbar-title>
+          <slot name="navbar-title" />
+        </template>
+      </VPNavBarTitle>
+      <div class="content">
+        <!-- <VPNavBarSearch class="search" /> -->
+        <VPNavBarMenu class="menu" />
+        <VPNavBarAppearance class="appearance" />
+        <VPNavBarSocialLinks class="social-links" />
+        <VPNavBarExtra class="extra" />
+        <!-- <VPNavBarHamburger
+          class="hamburger"
+          :active="isScreenOpen"
+          @click="$emit('toggle-screen')"
+        /> -->
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.VPNavBar {
+  position: relative;
+  border-bottom: 1px solid var(--vt-c-divider-light);
+  padding: 0 12px 0 24px;
+  height: var(--vt-nav-height);
+  background-color: var(--vt-c-bg);
+  white-space: nowrap;
+  transition: border-color 0.5s, background-color 0.5s;
+}
+
+@media (min-width: 768px) {
+  .VPNavBar {
+    padding: 0 12px 0 32px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .VPNavBar {
+    padding: 0 32px;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: var(--vp-screen-max-width);
+}
+
+.content {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.menu + .appearance {
+  margin-left: 8px;
+}
+.menu + .social-links {
+  margin-left: 12px;
+}
+.appearance + .social-links {
+  margin-left: 12px;
+}
+</style>

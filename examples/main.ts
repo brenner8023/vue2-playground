@@ -1,5 +1,21 @@
+import "tailwindcss/tailwind.css";
+import "normalize.css";
+import "@examples/styles/base.css";
+import "@examples/styles/variables.css";
+import "@examples/styles/vt-switch.css";
+import "@examples/styles/vt-switch-appearance.css";
+import "@examples/styles/vt-social-link.css";
+import "@examples/styles/vt-social-links.css";
+
+import "@examples/styles/vt-flyout.css";
+import "@examples/styles/vt-hamburger.css";
+import "@examples/styles/vt-link.css";
+import "@examples/styles/vt-menu.css";
+import "@examples/styles/vt-menu-group.css";
+import "@examples/styles/vt-menu-link.css";
+
 import Vue from "vue";
-import VueCompositionAPI from "@vue/composition-api";
+import VueCompostionAPI, { createApp, h } from "@vue/composition-api";
 import App from "@examples/App.vue";
 import VueRouter from "vue-router";
 import routes from "@examples/router";
@@ -16,7 +32,6 @@ import MainFooter from "@examples/components/footer.vue";
 import MainHeader from "@examples/components/header.vue";
 import FooterNav from "@examples/components/footer-nav.vue";
 import DemoBlock from "@examples/components/DemoBlock.vue";
-
 // UI组件库样式引入
 import "ant-design-vue/dist/antd.css";
 import "element-ui/lib/theme-chalk/index.css";
@@ -29,7 +44,7 @@ import "@assets/styles/index.scss";
 import "highlight.js/styles/a11y-dark.css";
 
 Vue.config.productionTip = false;
-Vue.use(VueCompositionAPI);
+Vue.use(VueCompostionAPI);
 Vue.use(VueRouter);
 Vue.use(CodeViewer); // 国际化配置 Vue.use(CodeViewer, { locale });
 Vue.use(ElementUI); // 引入组件 element 2.x
@@ -57,7 +72,14 @@ router.afterEach((route) => {
 });
 
 // TODO:store  vuex=>Pinia
-new Vue({
+// new Vue({
+//   router,
+//   render: (h) => h(App),
+// }).$mount("#app");
+
+const app = createApp({
   router,
-  render: (h) => h(App),
-}).$mount("#app");
+  render: () => h(App),
+});
+
+app.mount("#app");

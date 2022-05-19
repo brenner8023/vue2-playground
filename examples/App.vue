@@ -1,6 +1,7 @@
 <template>
   <div id="app" :class="{ 'is-component': isComponent }">
-    <main-header :is-home="isHome"></main-header>
+    <!-- <main-header :is-home="isHome"></main-header> -->
+    <VPNav></VPNav>
     <div>
       <router-view :class="{ 'markdown-body': isChangelog }"></router-view>
     </div>
@@ -14,6 +15,9 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "App",
+  components: {
+    VPNav: () => import("./components/VPNav.vue"),
+  },
   mounted() {
     console.log("vcv site mounted");
   },
