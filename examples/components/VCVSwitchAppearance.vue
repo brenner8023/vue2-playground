@@ -56,7 +56,7 @@ export default defineComponent({
   <VCVSwitch
     class="vt-switch-appearance"
     aria-label="toggle dark mode"
-    @click="toggle"
+    @click.native="toggle()"
   >
     <VCVIconSun class="vt-switch-appearance-sun" />
     <VCVIconMoon class="vt-switch-appearance-moon" />

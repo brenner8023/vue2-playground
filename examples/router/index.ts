@@ -1,6 +1,6 @@
 import { RouteConfig } from "vue-router";
-import Demo from "../views/CompositionApi.vue";
-// import Demo from "../views/REPL.vue";
+// import Demo from "../views/CompositionApi.vue";
+import Demo from "../views/REPL.vue";
 
 import sideNavConfig from "./side-nav.config.json";
 

@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent, ref } from "@vue/composition-api";
-import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
+import { lock, unlock, clearBodyLocks } from "tua-body-scroll-lock";
+
 import _VPNavScreenMenu from "./VPNavScreenMenu.vue";
 import _VPNavScreenAppearance from "./VPNavScreenAppearance.vue";
 import _VPNavScreenSocialLinks from "./VPNavScreenSocialLinks.vue";
@@ -19,12 +20,14 @@ export default defineComponent({
   setup(props) {
     const screen = ref<HTMLElement | null>(null);
 
+    // https://stackoverflow.com/questions/67013649/locking-the-body-scroll-blocks-target-element-scrolling
     function lockBodyScroll() {
-      disableBodyScroll(screen.value!, { reserveScrollBarGap: true });
+      lock();
     }
 
     function unlockBodyScroll() {
-      clearAllBodyScrollLocks();
+      // clearAllBodyScrollLocks();
+      clearBodyLocks();
     }
     return {
       screen,

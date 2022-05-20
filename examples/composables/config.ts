@@ -27,71 +27,57 @@ export function useConfig() {
       ] as SocialLink[],
       nav: [
         {
-          text: "test1",
-          link: "test1",
-          activeMatch: "test1",
-          // items: (NavItemWithLink | MenuItemChildWithChildren)[];
+          text: "REPL",
+          link: "/#/repl",
+          activeMatch: "repl",
         },
         {
-          text: "test2",
-          // link: "test2",
-          // activeMatch: "test2",
+          text: "文档",
           items: [
             {
-              text: "test2-s1",
-              items: [
-                {
-                  text: "test2-s1-c1",
-                  link: "test2-s1-c1",
-                  activeMatch: "test2-s1-c1",
-                },
-                {
-                  text: "test2-s1-c2",
-                  link: "test2-s1-c2",
-                  activeMatch: "test2-s1-c2",
-                },
-              ],
+              text: "指南",
+              link: "/#/doc",
             },
             {
-              text: "test2-s2",
-              activeMatch: "test2-s2",
-              items: [
-                {
-                  text: "test2-s2-c1",
-                  link: "test2-s2-c1",
-                  activeMatch: "test2-s2-c1",
-                },
-                {
-                  text: "test2-s2-c2",
-                  link: "test2-s2-c2",
-                  activeMatch: "test2-s2-c2",
-                },
-              ],
-            },
-            {
-              text: "test2-s3",
-              link: "test2-s3",
-              activeMatch: "test2-s3",
+              text: "更新日志",
+              link: "/#/changelog",
             },
           ],
         },
         {
-          text: "test3",
-          // link: "test3",
-          // activeMatch: "test3",
+          text: "关于",
           items: [
             {
-              text: "test3-s1",
-              link: "https://staging-cn.vuejs.org/guide/quick-start.html",
-              activeMatch: "test3-s1",
+              text: "github",
+              items: [
+                {
+                  text: "issues",
+                  link: "https://github.com/andurils/vue-code-view/issues",
+                },
+                {
+                  text: "changelog",
+                  link: "https://github.com/andurils/vue-code-view/blob/main/CHANGELOG.zh-CN.md",
+                },
+              ],
             },
             {
-              text: "test3-s2",
-              link: "test3-s2",
-              activeMatch: "test3-s2",
+              text: "参考",
+              items: [
+                {
+                  text: "Ant Design",
+                  link: "https://ant.design/index-cn",
+                },
+                {
+                  text: "Ant Design Vue",
+                  link: "https://www.antdv.com/components/overview",
+                },
+                {
+                  text: "Element UI",
+                  link: "https://element.eleme.cn/#/zh-CN",
+                },
+              ],
             },
           ],
-          // items: (NavItemWithLink | MenuItemChildWithChildren)[];
         },
       ] as NavItem[],
       // sidebar: config.sidebar && normalizeSideBar(config.sidebar)

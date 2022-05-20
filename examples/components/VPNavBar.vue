@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, ref } from "@vue/composition-api";
+import { defineComponent, onMounted, ref } from "@vue/composition-api";
 import VPNavBarTitle from "./VPNavBarTitle.vue";
 // import VPNavBarSearch from "./VPNavBarSearch.vue";
 import _VPNavBarMenu from "./VPNavBarMenu.vue";
@@ -17,16 +17,19 @@ export default defineComponent({
     VPNavBarMenu: _VPNavBarMenu as any,
     VPNavBarHamburger: _VPNavBarHamburger as any,
   },
+  inheritAttrs: false,
   props: {
     isScreenOpen: {
       type: Boolean,
     },
   },
-  setup(props) {
-    // const isScreenOpen_tmp = ref<boolean>(true);
-    return {
-      // isScreenOpen_tmp,
-    };
+  emits: ["toggle-screen"],
+  setup(props, context) {
+    onMounted(() => {
+      // console.log("toggleScreen");
+    });
+
+    return {};
   },
 });
 </script>
@@ -48,7 +51,7 @@ export default defineComponent({
         <VPNavBarHamburger
           class="hamburger"
           :active="isScreenOpen"
-          @click="$emit('toggle-screen')"
+          @click.native="$emit('toggle-screen')"
         />
       </div>
     </div>

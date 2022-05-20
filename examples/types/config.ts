@@ -114,7 +114,7 @@ export interface VitePressData<T = any> {
   // site: Ref<SiteData<T>>;
   page: Ref<PageData>;
   // theme: Ref<T>;
-  // frontmatter: Ref<PageData["frontmatter"]>;
+  frontmatter: Ref<PageData["frontmatter"]>;
   title: Ref<string>;
   description: Ref<string>;
   lang: Ref<string>;
