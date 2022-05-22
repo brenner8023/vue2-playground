@@ -6,8 +6,7 @@ import { useConfig } from "../composables/config";
 export default defineComponent({
   components: { VCVSwitchAppearance },
   setup() {
-    // const { config } = useConfig();
-    var config = { appearance: true };
+    const { config } = useConfig();
 
     return {
       config,

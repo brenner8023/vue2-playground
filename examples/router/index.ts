@@ -63,7 +63,7 @@ let route: Array<RouteConfig> = [
     path: "/",
     name: "Home",
     // component: Demo,
-    component: () => import("../pages/zh-CN/Home.vue"),
+    component: () => import("../views/home/Home.vue"),
   },
   {
     path: "/repl",

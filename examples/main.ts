@@ -14,6 +14,8 @@ import "@examples/styles/vt-menu.css";
 import "@examples/styles/vt-menu-group.css";
 import "@examples/styles/vt-menu-link.css";
 
+import "@examples/styles/vt-box.css";
+
 import Vue from "vue";
 import VueCompostionAPI, { createApp, h } from "@vue/composition-api";
 import App from "@examples/App.vue";

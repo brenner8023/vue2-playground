@@ -1,46 +1,99 @@
 <template>
-  <div id="app" :class="{ 'is-component': isComponent }">
+  <div id="app" class="VPApp" :class="{ 'is-component': isComponent }">
+    <!-- VTBackdrop -->
+    <!-- barner 信息提示 -->
+    <!-- <slot name="banner" /> -->
     <!-- <main-header :is-home="isHome"></main-header> -->
     <VPNav></VPNav>
-    <div>
+    <!-- Sidebar fixed -->
+    <!-- VPLocalNav -->
+    <!-- VPSidebar -->
+    <VPContent></VPContent>
+
+    <!-- VPContent -->
+    <!-- VPContent- VPNotFound  -->
+    <!-- VPContent-VPContentPage  -->
+    <!-- VPContent- VPContentDoc -->
+
+    <!-- <div>
       <router-view :class="{ 'markdown-body': isChangelog }"></router-view>
-    </div>
+    </div> -->
+
     <!-- 首页显示 -->
-    <main-footer v-if="isHome || isChangelog"></main-footer>
+    <!-- footer-before  -->
+    <!-- <VPFooter v-if="frontmatter.footer !== false" /> -->
+    <VPFooter v-if="isHome || isChangelog" />
+    <!-- footer-after -->
+    <!-- <main-footer v-if="isHome || isChangelog"></main-footer> -->
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import {
+  defineComponent,
+  computed,
+  onMounted,
+  watchEffect,
+} from "@vue/composition-api";
 
-export default Vue.extend({
+export default defineComponent({
   name: "App",
   components: {
     VPNav: () => import("./components/VPNav.vue"),
+    VPFooter: () => import("./components/VPFooter.vue"),
+    VPContent: () => import("./components/VPContent.vue"),
   },
-  mounted() {
-    console.log("vcv site mounted");
-  },
-  computed: {
-    isComponent() {
-      // return /^component-/.test(this.$route.name || "");
-      return this.$route.path.indexOf("component") > -1;
-    },
-    isRepl() {
-      return this.$route.path.indexOf("repl") > -1;
-    },
-    isChangelog() {
-      return /^changelog/.test(this.$route.name || "");
-    },
-    isHome() {
-      // return /^home/.test(this.$route.name || "");
-      return this.$route.path.length <= 1;
-    },
+
+  setup(_, { root }) {
+    // https://stackoverflow.com/questions/53126710/how-to-get-current-name-of-route-in-vue
+    // watchEffect(() => {
+    //   triggerElement = isSidebarOpen.value
+    //     ? (document.activeElement as HTMLButtonElement)
+    //     : undefined;
+    // });
+
+    onMounted(() => {
+      console.log("vcv is mounted!");
+    });
+
+    const isComponent = computed(
+      () =>
+        // return /^component-/.test(this.$route.name || "");
+        root.$route.path.indexOf("component") > -1
+    );
+    const isRepl = computed(() => root.$route.path.indexOf("repl") > -1);
+    const isChangelog = computed(() =>
+      /^changelog/.test(root.$route.name || "")
+    );
+    const isHome = computed(
+      () =>
+        // return /^home/.test(this.$route.name || "");
+        root.$route.path.length <= 1
+    );
+    return {
+      isComponent,
+      isRepl,
+      isChangelog,
+      isHome,
+    };
   },
 });
 </script>
 
-<style>
+<style scoped>
+.VPApp {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--vt-c-bg);
+  transition: background-color 0.5s;
+  padding-top: var(--vt-banner-height);
+}
+
+.backdrop {
+  z-index: var(--vp-z-index-backdrop);
+}
+
 .markdown-body {
   box-sizing: border-box;
   max-width: 980px;

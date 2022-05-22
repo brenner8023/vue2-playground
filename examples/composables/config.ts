@@ -85,8 +85,18 @@ export function useConfig() {
   };
 }
 
+// https://vuepress.vuejs.org/theme/default-theme-config.html#homepage
 export function useData() {
   return {
     page: {} as PageData,
+    theme: {
+      footer: {
+        license: {
+          text: "MIT License",
+          link: "https://opensource.org/licenses/MIT",
+        },
+        copyright: "Copyright © 20201-present Andurils",
+      },
+    },
   };
 }
