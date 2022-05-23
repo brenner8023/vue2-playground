@@ -23,6 +23,7 @@ import HW from "./Test.vue";
 // import VCVSwitchAppearance from "@examples/components/VCVSwitchAppearance.vue";
 
 import { useDark, useToggle } from "@vueuse/core";
+import { useLocaleStore } from "@examples/store/modules/locale"; //引入store
 
 export default defineComponent({
   components: {
@@ -37,6 +38,8 @@ export default defineComponent({
   },
   setup(props) {
     console.log(1);
+
+    const store = useLocaleStore();
     // 定义挂载节点，声明的类型详见下方附表
     const msg = ref<HTMLElement | null>(null);
 
@@ -56,6 +59,7 @@ export default defineComponent({
       console.log(3);
       // 比如获取DOM的文本
       console.log(msg.value!.innerText);
+      console.log("pinia", store.getShowPicker, store.getLocale);
     });
 
     console.log(4);
@@ -68,5 +72,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style></style>

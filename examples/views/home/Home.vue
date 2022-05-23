@@ -11,11 +11,15 @@ export default defineComponent({
   <div>
     <section id="hero">
       <h1 class="tagline">
-        <!-- <span class="accent">渐进式</span> -->
-        <br />Vue Code View
+        <!-- <span class="accent">渐进式</span><br /> -->
+        Vue Code View
       </h1>
       <p class="description">
         一个基于 Vue 2，在网页中实时编辑运行代码、预览效果的轻量级代码交互组件。
+      </p>
+      <p class="description">
+        A Vue 2 component like Vue SFC REPL '@vue/repl' ，which can see the
+        effect of changes instantly as you code.
       </p>
       <p class="actions">
         <a class="get-started" href="/guide/introduction.html"> 快速开始 </a>
@@ -25,18 +29,32 @@ export default defineComponent({
 
     <section id="highlights" class="vt-box-container">
       <div class="vt-box">
-        <h2>轻量</h2>
-        <p>无需安装任何环境，打开页面快速体验交互细节。</p>
-      </div>
-      <div class="vt-box">
-        <h2>实时交互</h2>
+        <h2>Not Setup</h2>
         <p>
-          在线代码编辑器实时调试预览代码编辑效果。支持代码高亮、括号/标签匹配自动关闭、代码折叠。
+          Start coding with your favorite language on any platform, OS, and
+          device.
         </p>
       </div>
       <div class="vt-box">
-        <h2>Markdown</h2>
-        <p>支持 Markdown 示例实时渲染。</p>
+        <h2>Updates live</h2>
+        <p>You can see the effect of changes instantly, inline, as you code.</p>
+      </div>
+      <div class="vt-box">
+        <h2>Rich interaction</h2>
+        <p>Make your project more productive with interactive docs.</p>
+      </div>
+
+      <div class="vt-box">
+        <h2>轻量快速</h2>
+        <p>无需配置环境，打开浏览器即可开始编程。</p>
+      </div>
+      <div class="vt-box">
+        <h2>更新实时</h2>
+        <p>调试代码时，可以立即看到更改的效果。</p>
+      </div>
+      <div class="vt-box">
+        <h2>交互丰富</h2>
+        <p>支持代码高亮、 Markdown 示例渲染，让您的项目文档更加高效。</p>
       </div>
     </section>
   </div>

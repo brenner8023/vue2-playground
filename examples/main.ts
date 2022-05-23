@@ -18,10 +18,12 @@ import "@examples/styles/vt-box.css";
 
 import Vue from "vue";
 import VueCompostionAPI, { createApp, h } from "@vue/composition-api";
-import App from "@examples/App.vue";
+import App from "./App.vue";
 import VueRouter from "vue-router";
 import routes from "@examples/router";
 import CodeViewer from "@/index";
+import { PiniaVuePlugin } from "pinia";
+import { store } from "@examples/store";
 
 // UI组件库引入
 import Antd from "ant-design-vue";
@@ -48,6 +50,9 @@ import "highlight.js/styles/a11y-dark.css";
 Vue.config.productionTip = false;
 Vue.use(VueCompostionAPI);
 Vue.use(VueRouter);
+Vue.use(PiniaVuePlugin);
+// Vue.use(VueI18n);
+
 Vue.use(CodeViewer); // 国际化配置 Vue.use(CodeViewer, { locale });
 Vue.use(ElementUI); // 引入组件 element 2.x
 Vue.use(Antd); // 引入组件 antd vue 1.x
@@ -56,6 +61,9 @@ Vue.component("demo-block", DemoBlock);
 Vue.component("main-footer", MainFooter);
 Vue.component("main-header", MainHeader);
 Vue.component("footer-nav", FooterNav);
+
+// const pinia = createPinia();
+// pinia.use(createPersistedState()); //开启缓存，存储在localstorage
 
 const router = new VueRouter({
   mode: "hash", // 'hash' | 'history'
@@ -73,14 +81,10 @@ router.afterEach((route) => {
   });
 });
 
-// TODO:store  vuex=>Pinia
-// new Vue({
-//   router,
-//   render: (h) => h(App),
-// }).$mount("#app");
-
+// 项目创建应用实例 初始化配置
 const app = createApp({
   router,
+  pinia: store,
   render: () => h(App),
 });
 
