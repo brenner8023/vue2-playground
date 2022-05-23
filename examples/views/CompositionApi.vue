@@ -6,9 +6,6 @@
     <!-- 挂载DOM元素 -->
     <p ref="msg">留意该节点，有一个ref属性</p>
     <!-- 挂载DOM元素 -->
-
-    <button @click="toggleDark()">Is Dark: {{ isDark }}</button>
-    <!-- <VCVSwitchAppearance></VCVSwitchAppearance> -->
   </div>
 </template>
 
@@ -19,8 +16,7 @@ import {
   onMounted,
   ref,
 } from "@vue/composition-api";
-import HW from "./Test.vue";
-// import VCVSwitchAppearance from "@examples/components/VCVSwitchAppearance.vue";
+import HW from "./Test2.vue";
 
 import { useDark, useToggle } from "@vueuse/core";
 import { useLocaleStore } from "@examples/store/modules/locale"; //引入store

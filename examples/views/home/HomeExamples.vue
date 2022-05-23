@@ -79,13 +79,13 @@ $primary-color: red;
                 <div>{item.desc}</div>
               </div>
               <div class="react-live">
-                <CodeViewer
+                <code-viewer
                   source={item.source}
                   showCode
                   layout={item.layout}
                   height={item.height}
                   maxHeight={item.maxHeight}
-                ></CodeViewer>
+                ></code-viewer>
               </div>
             </div>
           );
@@ -96,7 +96,7 @@ $primary-color: red;
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .examples {
   margin-top: 20px;
   margin-bottom: 15px;
@@ -140,6 +140,10 @@ $primary-color: red;
       width: 100%;
     }
   }
+}
+
+.dark .title {
+  color: #fff !important;
 }
 
 @media (max-width: 1279px) {

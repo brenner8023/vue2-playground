@@ -75,7 +75,6 @@ export default {
   },
 
   created() {
-    // this.onChangeHandler = debounce(250, this.handleCodeChange);
     this.onChangeHandler = useDebounceFn(this.handleCodeChange, 250);
   },
   mounted() {
@@ -93,20 +92,18 @@ export default {
     },
     // 更新 code 内容
     handleCodeChange(val) {
-      console.log("code change!");
+      // console.log("code change!");
       this.code = val;
     },
 
     // 组件代码编辑器展示 废弃
     handleShowCode() {
       this.showCodeEditor = !this.showCodeEditor;
-      console.log(!this.isVertical || this.showCodeEditor);
     },
     // 组件演示背景透明切换
     handleChangeTransparent() {
       toggleClass(this.$refs.vcv, "vue-code-transparent");
     },
-    // ---------------------
     // 布局切换
     onDockHandler(e) {
       this.layoutName = e;
@@ -114,7 +111,6 @@ export default {
     // 组件代码编辑器展示
     onCodeShowHandler(showState) {
       this.showCodeEditor = showState;
-      console.log(!this.isVertical || this.showCodeEditor);
     },
   },
   computed: {
@@ -160,13 +156,6 @@ export default {
               onDock={this.onDockHandler}
               onCodeshow={this.onCodeShowHandler}
             ></Output>
-
-            {/*-- toolbar
-               <div class="code-view dSNpeq"> </div>
-              <Toolbar></Toolbar> --*/}
-
-            {/*-- result-box
-              <OutputContainer code={this.code}></OutputContainer> --*/}
           </template>
 
           {/*-- code editor   --*/}
@@ -189,20 +178,6 @@ export default {
 </script>
 
 <style lang="scss">
-// 背景透明
-// .vue-code-transparent .code-view {
-//   background-image: linear-gradient(
-//       45deg,
-//       rgb(249, 249, 250) 25%,
-//       transparent 25%
-//     ),
-//     linear-gradient(135deg, rgb(249, 249, 250) 25%, transparent 25%),
-//     linear-gradient(45deg, transparent 75%, rgb(249, 249, 250) 75%),
-//     linear-gradient(135deg, transparent 75%, rgb(249, 249, 250) 75%);
-//   background-size: 20px 20px;
-//   background-position: 0px 0px, 10px 0px, 10px -10px, 0px 10px;
-// }
-
 .vue-repl {
   --bg: #fff;
   --bg-soft: #f8f8f8;
@@ -232,7 +207,7 @@ export default {
   transition: box-shadow 0.2s ease-out;
 }
 
-.dark.vue-repl {
+.dark .vue-repl {
   --bg: #1a1a1a;
   --bg-soft: #242424;
   --bg-device: rgb(45, 45, 45);

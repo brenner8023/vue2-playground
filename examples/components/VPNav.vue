@@ -4,7 +4,6 @@ import { useSidebar } from "../composables/sidebar";
 import VPNavBar from "./VPNavBar.vue";
 import VPNavScreen from "./VPNavScreen.vue";
 import { provide, unref } from "@vue/composition-api";
-import Header from "./header.vue";
 
 const { isScreenOpen, closeScreen, toggleScreen } = useNav();
 const { hasSidebar } = useSidebar();

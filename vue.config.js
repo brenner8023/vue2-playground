@@ -47,8 +47,8 @@ module.exports = {
       //   transformer: "vue2",
       // }),
       // tailwind
-      require("tailwindcss"),
-      require("autoprefixer"),
+      // require("tailwindcss"),
+      // require("autoprefixer"),
     ];
 
     // 生产环境相关配置
