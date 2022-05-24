@@ -4,11 +4,14 @@
     <!-- barner 信息提示 -->
     <!-- <slot name="banner" /> -->
     <!-- <main-header :is-home="isHome"></main-header> -->
-    <VPNav></VPNav>
+    <VPNav />
     <!-- Sidebar fixed -->
-    <!-- VPLocalNav -->
-    <!-- VPSidebar -->
-    <VPContent></VPContent>
+    <VPLocalNav :open="isSidebarOpen" @open-menu="openSidebar" />
+    <!-- <VPSidebar :open="isSidebarOpen">
+      <template #top> </template>
+      <template #bottom> </template>
+    </VPSidebar> -->
+    <VPContent />
 
     <!-- VPContent -->
     <!-- VPContent- VPNotFound  -->
@@ -34,14 +37,18 @@ import {
   computed,
   onMounted,
   watchEffect,
+  provide,
 } from "@vue/composition-api";
+import { useSidebar } from "./composables/sidebar";
 
 export default defineComponent({
   name: "App",
   components: {
     VPNav: () => import("./components/VPNav.vue"),
+    VPLocalNav: () => import("./components/VPLocalNav.vue"),
     VPFooter: () => import("./components/VPFooter.vue"),
     VPContent: () => import("./components/VPContent.vue"),
+    VPSidebar: () => import("./components/VPSidebar.vue"),
   },
 
   setup(_, { root }) {
@@ -70,11 +77,24 @@ export default defineComponent({
         // return /^home/.test(this.$route.name || "");
         root.$route.path.length <= 1
     );
+
+    // 解构
+    const {
+      isOpen: isSidebarOpen,
+      open: openSidebar,
+      close: closeSidebar,
+    } = useSidebar();
+
+    provide("close-sidebar", closeSidebar);
     return {
       isComponent,
       isRepl,
       isChangelog,
       isHome,
+      // Sidebar
+      isSidebarOpen,
+      openSidebar,
+      closeSidebar,
     };
   },
 });

@@ -1,30 +1,28 @@
 import { ref, computed } from "@vue/composition-api";
-// import { useRoute, useData } from "vitepress";
-// import { getSidebar } from "../support/sidebar";
-// import { useConfig } from "./config";
+import { getSidebar } from "../utils/sidebar";
+import { useConfig, useData } from "./config";
 
 export function useSidebar() {
   // const route = useRoute();
-  // const { config } = useConfig();
-  // const { frontmatter } = useData();
+  const { config } = useConfig();
+  const { frontmatter } = useData();
 
   const isOpen = ref(false);
 
   const sidebar = computed(() => {
-    // const sidebarConfig = config.value.sidebar;
+    const sidebarConfig = config.sidebar;
     // const relativePath = route.data.relativePath;
+    const relativePath = "/guide/";
 
-    // return sidebarConfig ? getSidebar(sidebarConfig, relativePath) : [];
-    return [];
+    return sidebarConfig ? getSidebar(sidebarConfig, relativePath) : [];
   });
 
-  // const hasSidebar = computed(
-  //   () => frontmatter.value.sidebar !== false && sidebar.value.length > 0
-  // );
-
-  const hasSidebar = false;
+  const hasSidebar = computed(
+    () => frontmatter.sidebar !== false && sidebar.value.length > 0
+  );
 
   function open() {
+    console.log(`useSidebar`, isOpen);
     isOpen.value = true;
   }
 
