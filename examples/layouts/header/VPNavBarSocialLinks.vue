@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
-import _VCVSocialLinks from "./VCVSocialLinks.vue";
-import { useConfig } from "../composables/config";
+import _VCVSocialLinks from "@examples/components/VCVSocialLinks.vue";
+import { useConfig } from "@examples/composables/config";
 
 export default defineComponent({
   components: { VCVSocialLinks: _VCVSocialLinks as any },

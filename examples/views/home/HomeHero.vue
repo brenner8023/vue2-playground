@@ -4,7 +4,7 @@ export default defineComponent({ name: "HomeHero" });
 </script>
 
 <template>
-  <header class="home-hero">
+  <div class="home-hero">
     <h1 class="tagline">Vue Code View</h1>
     <p class="description">
       一个基于 Vue 2，在网页中实时编辑运行代码、预览效果的轻量级代码交互组件。
@@ -31,7 +31,7 @@ export default defineComponent({ name: "HomeHero" });
       </a>
       <a class="demo" href="/repl">在线示例</a>
     </p>
-  </header>
+  </div>
 </template>
 
 <style scoped>

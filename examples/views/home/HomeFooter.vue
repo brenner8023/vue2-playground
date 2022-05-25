@@ -13,11 +13,11 @@ export default defineComponent({
 </script>
 
 <template>
-  <footer v-if="frontmatter.footer" class="footer">
+  <div v-if="frontmatter.footer" class="footer">
     <div class="container">
       <p class="text">{{ frontmatter.footer }}</p>
     </div>
-  </footer>
+  </div>
 </template>
 
 <style scoped>

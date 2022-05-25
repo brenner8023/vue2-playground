@@ -17,9 +17,10 @@ export function useSidebar() {
     return sidebarConfig ? getSidebar(sidebarConfig, relativePath) : [];
   });
 
-  const hasSidebar = computed(
-    () => frontmatter.sidebar !== false && sidebar.value.length > 0
-  );
+  // const hasSidebar = computed(
+  //   () => frontmatter.sidebar !== false && sidebar.value.length > 0
+  // );
+  const hasSidebar = true;
 
   function open() {
     console.log(`useSidebar`, isOpen);

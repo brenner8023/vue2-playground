@@ -1,36 +1,3 @@
-<template>
-  <div id="app" class="VPApp" :class="{ 'is-component': isComponent }">
-    <!-- VTBackdrop -->
-    <!-- barner 信息提示 -->
-    <!-- <slot name="banner" /> -->
-    <!-- <main-header :is-home="isHome"></main-header> -->
-    <VPNav />
-    <!-- Sidebar fixed -->
-    <VPLocalNav :open="isSidebarOpen" @open-menu="openSidebar" />
-    <!-- <VPSidebar :open="isSidebarOpen">
-      <template #top> </template>
-      <template #bottom> </template>
-    </VPSidebar> -->
-    <VPContent />
-
-    <!-- VPContent -->
-    <!-- VPContent- VPNotFound  -->
-    <!-- VPContent-VPContentPage  -->
-    <!-- VPContent- VPContentDoc -->
-
-    <!-- <div>
-      <router-view :class="{ 'markdown-body': isChangelog }"></router-view>
-    </div> -->
-
-    <!-- 首页显示 -->
-    <!-- footer-before  -->
-    <!-- <VPFooter v-if="frontmatter.footer !== false" /> -->
-    <VPFooter v-if="isHome || isChangelog" />
-    <!-- footer-after -->
-    <!-- <main-footer v-if="isHome || isChangelog"></main-footer> -->
-  </div>
-</template>
-
 <script lang="ts">
 import {
   defineComponent,
@@ -44,11 +11,12 @@ import { useSidebar } from "./composables/sidebar";
 export default defineComponent({
   name: "App",
   components: {
-    VPNav: () => import("./components/VPNav.vue"),
-    VPLocalNav: () => import("./components/VPLocalNav.vue"),
-    VPFooter: () => import("./components/VPFooter.vue"),
-    VPContent: () => import("./components/VPContent.vue"),
-    VPSidebar: () => import("./components/VPSidebar.vue"),
+    Banner: () => import("./views/banner/Banner.vue"),
+    VPNav: () => import("./layouts/header/VPNav.vue"),
+    VPLocalNav: () => import("./layouts/sidebar/VPLocalNav.vue"),
+    VPFooter: () => import("./layouts/content/VPFooter.vue"),
+    VPContent: () => import("./layouts/content/VPContent.vue"),
+    VPSidebar: () => import("./layouts/sidebar/VPSidebar.vue"),
   },
 
   setup(_, { root }) {
@@ -99,7 +67,36 @@ export default defineComponent({
   },
 });
 </script>
+<template>
+  <div id="app" class="VPApp" :class="{ 'is-component': isComponent }">
+    <!-- VTBackdrop -->
+    <Banner />
+    <VPNav />
+    <VPLocalNav :open="isSidebarOpen" @open-menu="openSidebar" />
+    <VPSidebar :open="isSidebarOpen">
+      <template #top> </template>
+      <template #bottom> </template>
+    </VPSidebar>
+    <VPContent />
 
+    <!-- VPContent -->
+    <!-- VPContent- VPNotFound  -->
+    <!-- VPContent-VPContentPage  -->
+    <!-- VPContent- VPContentDoc -->
+
+    <!-- <div>
+      <router-view :class="{ 'markdown-body': isChangelog }"></router-view>
+    </div> -->
+
+    <!-- 首页显示 -->
+    <!-- footer-before  -->
+    <!-- <VPFooter v-if="frontmatter.footer !== false" /> -->
+    <VPFooter v-if="isHome || isChangelog" />
+    <!-- <VPFooter /> -->
+    <!-- footer-after -->
+    <!-- <main-footer v-if="isHome || isChangelog"></main-footer> -->
+  </div>
+</template>
 <style scoped>
 .VPApp {
   display: flex;

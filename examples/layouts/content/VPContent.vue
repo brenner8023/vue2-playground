@@ -1,16 +1,23 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
-// import _VCVLink from "./VCVLink.vue";
-// import { useData } from "../composables/config";
+
+import { useData } from "@examples/composables/config";
+import { useSidebar } from "@examples/composables/sidebar";
+
+import _VPContentPage from "./VPContentPage.vue";
+import _VPContentDoc from "./VPContentDoc.vue";
 
 export default defineComponent({
   components: {
-    // VCVLink: _VCVLink as any,
+    VPContentPage: _VPContentPage as any,
+    VPContentDoc: _VPContentDoc as any,
   },
   setup() {
-    // const { theme } = useData();
+    const { frontmatter } = useData();
+    const { hasSidebar } = useSidebar();
     return {
-      // theme,
+      frontmatter,
+      hasSidebar,
     };
   },
 });
@@ -18,10 +25,11 @@ export default defineComponent({
 
 <template>
   <div id="VPContent" class="VPContent">
-    <router-view></router-view>
+    <!-- <VPContentPage> </VPContentPage> -->
+    <VPContentDoc :class="{ 'has-sidebar': hasSidebar }"> </VPContentDoc>
 
     <!-- <VPNotFound v-if="route.component === VPNotFound" />
-    <VPContentPage v-else-if="!!frontmatter.page">
+   <VPContentPage v-else-if="!!frontmatter.page">
       <template #footer-before><slot name="footer-before" /></template>
       <template #footer-after><slot name="footer-after" /></template>
     </VPContentPage>

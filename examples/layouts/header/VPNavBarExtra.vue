@@ -1,10 +1,10 @@
 <script lang="ts">
 import { computed, defineComponent } from "@vue/composition-api";
-import { useConfig } from "../composables/config";
-import { SocialLink } from "../types/socialLink";
-import _VCVFlyout from "./VCVFlyout.vue";
-import _VCVSwitchAppearance from "./VCVSwitchAppearance.vue";
-import _VCVSocialLinks from "./VCVSocialLinks.vue";
+import { useConfig } from "@examples/composables/config";
+// import { SocialLink } from "@examples/types/socialLink";
+import _VCVFlyout from "@examples/components/VCVFlyout.vue";
+import _VCVSwitchAppearance from "@examples/components/VCVSwitchAppearance.vue";
+import _VCVSocialLinks from "@examples/components/VCVSocialLinks.vue";
 
 export default defineComponent({
   components: {
@@ -13,23 +13,23 @@ export default defineComponent({
     VCVSocialLinks: _VCVSocialLinks as any,
   },
   setup(props) {
-    // const { config } = useConfig();
-    var config = {
-      socialLinks: [
-        {
-          icon: "github",
-          link: "https://github.com/andurils/vue-code-view",
-        },
-        {
-          icon: "languages",
-          link: "https://staging-cn.vuejs.org/guide/typescript/options-api.html#typing-component-props",
-        },
-      ] as SocialLink[],
-      appearance: true,
-    };
+    const { config } = useConfig();
+    // var config = {
+    //   socialLinks: [
+    //     {
+    //       icon: "github",
+    //       link: "https://github.com/andurils/vue-code-view",
+    //     },
+    //     {
+    //       icon: "languages",
+    //       link: "https://staging-cn.vuejs.org/guide/typescript/options-api.html#typing-component-props",
+    //     },
+    //   ] as SocialLink[],
+    //   appearance: true,
+    // };
     const hasContent = computed(() => {
-      return true;
-      // return config.value.appearance || config.value.socialLinks;
+      // return true;
+      return config.appearance || config.socialLinks;
     });
 
     return {

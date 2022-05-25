@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
-import { useConfig } from "../composables/config";
+import { useConfig } from "@examples/composables/config";
 import _VPNavBarMenuLink from "./VPNavBarMenuLink.vue";
 import _VPNavBarMenuGroup from "./VPNavBarMenuGroup.vue";
 

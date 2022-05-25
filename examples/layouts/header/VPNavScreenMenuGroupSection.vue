@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, PropType } from "@vue/composition-api";
-import { MenuItemWithLink } from "../types/menu";
+import { MenuItemWithLink } from "@examples/types/menu";
 import _VPNavScreenMenuGroupLink from "./VPNavScreenMenuGroupLink.vue";
 
 export default defineComponent({

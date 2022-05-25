@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, ref, inject } from "@vue/composition-api";
-import _VCVLink from "./VCVLink.vue";
+import _VCVLink from "@examples/components/VCVLink.vue";
 
 export default defineComponent({
   components: {
@@ -20,24 +20,23 @@ export default defineComponent({
 </script>
 
 <template>
-  <VCVLink class="VPNavScreenMenuLink" :href="link" @click="closeScreen">
+  <VCVLink class="VPNavScreenMenuGroupLink" :href="link" @click="closeScreen">
     {{ text }}
   </VCVLink>
 </template>
 
 <style scoped>
-.VPNavScreenMenuLink {
+.VPNavScreenMenuGroupLink {
   display: block;
-  border-bottom: 1px solid var(--vt-c-divider-light);
-  padding: 12px 0 11px;
-  line-height: 24px;
-  font-size: 14px;
-  font-weight: 500;
+  line-height: 32px;
+  font-size: 13px;
+  font-weight: 400;
   color: var(--vt-c-text-1);
-  transition: border-color 0.5s, color 0.25s;
+  transition: color 0.25s;
+  margin-left: 0.6em;
 }
 
-.VPNavScreenMenuLink:hover {
+.VPNavScreenMenuGroupLink:hover {
   color: var(--vt-c-brand);
 }
 </style>

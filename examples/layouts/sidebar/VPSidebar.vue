@@ -5,7 +5,7 @@ import {
   ref,
   watchPostEffect,
 } from "@vue/composition-api";
-import { useSidebar } from "../composables/sidebar";
+import { useSidebar } from "@examples/composables/sidebar";
 import _VPSidebarGroup from "./VPSidebarGroup.vue";
 
 export default defineComponent({

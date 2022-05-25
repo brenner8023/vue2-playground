@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
-import { useSidebar } from "../composables/sidebar";
-import { useData } from "../composables/config";
-import VCVIconAlignLeft from "./icons/VCVIconAlignLeft.vue";
+import { useSidebar } from "@examples/composables/sidebar";
+import { useData } from "@examples/composables/config";
+import VCVIconAlignLeft from "@examples/components/icons/VCVIconAlignLeft.vue";
 
 export default defineComponent({
   components: {

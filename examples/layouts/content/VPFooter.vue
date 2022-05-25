@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
-import _VCVLink from "./VCVLink.vue";
-import { useData } from "../composables/config";
+import _VCVLink from "@examples/components/VCVLink.vue";
+import { useData } from "@examples/composables/config";
 
 export default defineComponent({
   components: {

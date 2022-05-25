@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent } from "@vue/composition-api";
-import { useConfig } from "../composables/config";
-import _VCVHamburger from "./VCVHamburger.vue";
+import { useConfig } from "@examples/composables/config";
+import _VCVHamburger from "@examples/components/VCVHamburger.vue";
 
 export default defineComponent({
   components: {

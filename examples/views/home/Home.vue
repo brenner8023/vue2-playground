@@ -16,14 +16,14 @@ export default defineComponent({
 </script>
 
 <template>
-  <main class="home" aria-labelledby="main-title">
+  <div class="home" aria-labelledby="main-title">
     <HomeHero />
     <HomeFeatures />
     <div class="home-content">
       <HomeExamples />
     </div>
     <HomeFooter />
-  </main>
+  </div>
 </template>
 
 <style scoped>

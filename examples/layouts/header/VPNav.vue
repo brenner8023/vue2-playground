@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useNav } from "../composables/nav";
-import { useSidebar } from "../composables/sidebar";
+import { provide } from "@vue/composition-api";
+import { useNav } from "@examples/composables/nav";
+import { useSidebar } from "@examples/composables/sidebar";
 import VPNavBar from "./VPNavBar.vue";
 import VPNavScreen from "./VPNavScreen.vue";
-import { provide, unref } from "@vue/composition-api";
 
 const { isScreenOpen, closeScreen, toggleScreen } = useNav();
 const { hasSidebar } = useSidebar();

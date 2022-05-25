@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, PropType, computed, ref } from "@vue/composition-api";
-import { MenuItemChild } from "../types/menu";
-import VCVIconPlus from "./icons/VCVIconPlus.vue";
+import { MenuItemChild } from "@examples/types/menu";
+import VCVIconPlus from "@examples/components/icons/VCVIconPlus.vue";
 import _VPNavScreenMenuGroupLink from "./VPNavScreenMenuGroupLink.vue";
 import _VPNavScreenMenuGroupSection from "./VPNavScreenMenuGroupSection.vue";
 

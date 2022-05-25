@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent, PropType, inject } from "@vue/composition-api";
-import { MenuItemWithLink } from "../types/menu";
-import { useData } from "../composables/config";
-import { isActive } from "../utils/utils";
+import { MenuItemWithLink } from "@examples/types/menu";
+import { useData } from "@examples/composables/config";
+import { isActive } from "@examples/utils/utils";
 
 export default defineComponent({
   props: {

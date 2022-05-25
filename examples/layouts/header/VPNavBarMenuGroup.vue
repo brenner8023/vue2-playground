@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent, PropType } from "@vue/composition-api";
-import { NavItemWithChildren } from "../types/config";
-import { useData } from "../composables/config";
-import _VCVFlyout from "./VCVFlyout.vue";
-import { isActive } from "../utils/utils";
+import { NavItemWithChildren } from "@examples/types/config";
+import { useData } from "@examples/composables/config";
+import _VCVFlyout from "@examples/components/VCVFlyout.vue";
+import { isActive } from "@examples/utils/utils";
 
 export default defineComponent({
   components: { VCVFlyout: _VCVFlyout as any },

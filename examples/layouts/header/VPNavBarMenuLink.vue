@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent, PropType } from "@vue/composition-api";
-import { NavItemWithLink } from "../types/config";
-import { useData } from "../composables/config";
-import _VCVLink from "./VCVLink.vue";
-import { isActive } from "../utils/utils";
+import { NavItemWithLink } from "@examples/types/config";
+import { useData } from "@examples/composables/config";
+import _VCVLink from "@examples/components/VCVLink.vue";
+import { isActive } from "@examples/utils/utils";
 
 export default defineComponent({
   components: { VCVLink: _VCVLink as any },

@@ -3,6 +3,40 @@ import { ref } from "@vue/composition-api";
 export const hashRE = /#.*$/;
 export const extRE = /(index)?\.(md|html)$/;
 export const outboundRE = /^[a-z]+:/i;
+export const EXTERNAL_URL_RE = /^https?:/i;
+
+export function isExternal(path: string): boolean {
+  return outboundRE.test(path);
+}
+
+/**
+ * Join two paths by resolving the slash collision.
+ */
+export function joinPath(base: string, path: string): string {
+  return `${base}${path}`.replace(/\/+/g, "/");
+}
+
+// export const siteDataRef: Ref<SiteData> = shallowRef(parse(serializedSiteData))
+// function parse(data: string): SiteData {
+//   const parsed = JSON.parse(data)
+//   return (import.meta.env.DEV ? readonly(parsed) : parsed) as SiteData
+// }
+
+export function withBase(path: string) {
+  return EXTERNAL_URL_RE.test(path) ? path : joinPath("http://vuejs.org", path);
+}
+
+export function normalizeLink(url: string): string {
+  if (isExternal(url)) {
+    return url;
+  }
+  const { pathname, search, hash } = new URL(url, "http://vuejs.org");
+  return withBase(
+    pathname.endsWith("/") || pathname.endsWith(".html")
+      ? url
+      : `${pathname.replace(/(\.md)?$/, ".html")}${search}${hash}`
+  );
+}
 
 const inBrowser = typeof window !== "undefined";
 const hashRef = ref(inBrowser ? location.hash : "");
