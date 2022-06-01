@@ -162,7 +162,8 @@ export default {
   --app-controls-h: 5.6rem;
   --pane-controls-h: 4.2rem;
   overflow: hidden;
-  padding: 12px 0 0 0;
+  // padding: 12px 0 0 0;
+  padding: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

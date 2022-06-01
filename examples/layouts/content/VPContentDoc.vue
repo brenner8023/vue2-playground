@@ -2,13 +2,16 @@
 import { defineComponent, computed } from "@vue/composition-api";
 import { useData } from "@examples/composables/config";
 
-// import VPContentDocOutline from "./VPContentDocOutline.vue";
+import _VPContentDocOutline from "./VPContentDocOutline.vue";
 import _VPContentDocFooter from "./VPContentDocFooter.vue";
-// import VPCarbonAds from "./VPCarbonAds.vue";
+import _VPCarbonAds from "./VPCarbonAds.vue";
 
 export default defineComponent({
   components: {
     VPContentDocFooter: _VPContentDocFooter as any,
+    VPContentDocOutline: _VPContentDocOutline as any,
+    VPCarbonAds: _VPCarbonAds as any,
+
     // VCVIconChevronRight,
   },
   setup() {
@@ -39,11 +42,13 @@ export default defineComponent({
       <div class="aside" v-if="frontmatter.aside !== false">
         <div class="aside-container">
           <slot name="aside-top" />
+
           <!-- <VPContentDocOutline
             v-if="page.headers && frontmatter.outline !== false"
           /> -->
+          <VPContentDocOutline v-if="page.headers" />
           <slot name="aside-mid" />
-          <!-- <VPCarbonAds v-if="theme.carbonAds && frontmatter.ads !== false" /> -->
+          <VPCarbonAds v-if="theme.carbonAds && frontmatter.ads !== false" />
           <slot name="aside-bottom" />
         </div>
       </div>
@@ -54,7 +59,8 @@ export default defineComponent({
           <router-view class="vt-doc" :class="pageClass"></router-view>
         </main>
         <slot name="content-bottom" />
-        <VPContentDocFooter v-if="frontmatter.footer !== false" />
+        <!-- <VPContentDocFooter v-if="frontmatter.footer !== false" /> -->
+        <VPContentDocFooter />
       </div>
     </div>
   </div>

@@ -20,7 +20,7 @@ export function useSidebar() {
   // const hasSidebar = computed(
   //   () => frontmatter.sidebar !== false && sidebar.value.length > 0
   // );
-  const hasSidebar = true;
+  const hasSidebar = false;
 
   function open() {
     console.log(`useSidebar`, isOpen);

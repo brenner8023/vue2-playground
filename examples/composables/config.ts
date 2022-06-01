@@ -315,8 +315,29 @@ export function useData() {
   return {
     page: {
       relativePath: "/guide/",
+      headers: [
+        {
+          level: 2,
+          title: "测试标题",
+          slug: "slug1",
+        },
+        {
+          level: 2,
+          title: "测试标题2",
+          slug: "slug2",
+        },
+        {
+          level: 3,
+          title: "测试标题3",
+          slug: "slug3",
+        },
+      ],
     } as PageData,
     theme: {
+      carbonAds: {
+        code: "CEBDT27Y",
+        placement: "vuejsorg",
+      },
       footer: {
         license: {
           text: "MIT License",
@@ -576,11 +597,15 @@ export function useData() {
           details: "Make your project more productive with interactive docs.",
         },
       ],
+
       footer: "关注获取更多信息！",
       isShowFooter: true,
       returnToTop: true,
       sidebar: true,
       aside: true,
+      ads: true,
+      outline: "deep",
+      page: true,
     },
   };
 }

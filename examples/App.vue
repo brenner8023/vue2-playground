@@ -5,6 +5,7 @@ import {
   onMounted,
   watchEffect,
   provide,
+  onUnmounted,
 } from "@vue/composition-api";
 import { useSidebar } from "./composables/sidebar";
 
@@ -14,22 +15,44 @@ export default defineComponent({
     Banner: () => import("./views/banner/Banner.vue"),
     VPNav: () => import("./layouts/header/VPNav.vue"),
     VPLocalNav: () => import("./layouts/sidebar/VPLocalNav.vue"),
-    VPFooter: () => import("./layouts/content/VPFooter.vue"),
+    VPAnnouncer: () => import("./layouts/content/VPAnnouncer.vue"),
     VPContent: () => import("./layouts/content/VPContent.vue"),
     VPSidebar: () => import("./layouts/sidebar/VPSidebar.vue"),
+    VCVBackdrop: () => import("./components/VCVBackdrop.vue"),
   },
 
   setup(_, { root }) {
+    // 解构
+    const {
+      isOpen: isSidebarOpen,
+      open: openSidebar,
+      close: closeSidebar,
+    } = useSidebar();
+
     // https://stackoverflow.com/questions/53126710/how-to-get-current-name-of-route-in-vue
-    // watchEffect(() => {
-    //   triggerElement = isSidebarOpen.value
-    //     ? (document.activeElement as HTMLButtonElement)
-    //     : undefined;
-    // });
+    let triggerElement: HTMLButtonElement | undefined;
+    watchEffect(() => {
+      triggerElement = isSidebarOpen.value
+        ? (document.activeElement as HTMLButtonElement)
+        : undefined;
+    });
+
+    const onEsacpe = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isSidebarOpen.value) {
+        closeSidebar();
+        triggerElement?.focus();
+      }
+    };
 
     onMounted(() => {
       console.log("vcv is mounted!");
+      window.addEventListener("keyup", onEsacpe);
     });
+    onUnmounted(() => {
+      window.removeEventListener("keyup", onEsacpe);
+    });
+
+    provide("close-sidebar", closeSidebar);
 
     const isComponent = computed(
       () =>
@@ -46,14 +69,6 @@ export default defineComponent({
         root.$route.path.length <= 1
     );
 
-    // 解构
-    const {
-      isOpen: isSidebarOpen,
-      open: openSidebar,
-      close: closeSidebar,
-    } = useSidebar();
-
-    provide("close-sidebar", closeSidebar);
     return {
       isComponent,
       isRepl,
@@ -69,7 +84,8 @@ export default defineComponent({
 </script>
 <template>
   <div id="app" class="VPApp" :class="{ 'is-component': isComponent }">
-    <!-- VTBackdrop -->
+    <!-- <VPSkipLink /> -->
+    <VCVBackdrop class="backdrop" :show="isSidebarOpen" @click="closeSidebar" />
     <Banner />
     <VPNav />
     <VPLocalNav :open="isSidebarOpen" @open-menu="openSidebar" />
@@ -78,23 +94,7 @@ export default defineComponent({
       <template #bottom> </template>
     </VPSidebar>
     <VPContent />
-
-    <!-- VPContent -->
-    <!-- VPContent- VPNotFound  -->
-    <!-- VPContent-VPContentPage  -->
-    <!-- VPContent- VPContentDoc -->
-
-    <!-- <div>
-      <router-view :class="{ 'markdown-body': isChangelog }"></router-view>
-    </div> -->
-
-    <!-- 首页显示 -->
-    <!-- footer-before  -->
-    <!-- <VPFooter v-if="frontmatter.footer !== false" /> -->
-    <VPFooter v-if="isHome || isChangelog" />
-    <!-- <VPFooter /> -->
-    <!-- footer-after -->
-    <!-- <main-footer v-if="isHome || isChangelog"></main-footer> -->
+    <VPAnnouncer />
   </div>
 </template>
 <style scoped>

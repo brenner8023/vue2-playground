@@ -1,31 +1,31 @@
-<!-- <script lang="ts" setup>
-import { ref, watch } from 'vue'
-import { useRoute } from 'vitepress'
+<!-- <script lang="ts">
+import { ref, watch } from "vue";
+import { useRoute } from "vitepress";
 
-const route = useRoute()
-const backToTop = ref()
+const route = useRoute();
+const backToTop = ref();
 
 watch(
   () => route.path,
   () => backToTop.value.focus()
-)
+);
 
 const focusOnTargetAnchor = ({ target }: Event) => {
   const el = document.querySelector(
     (target as HTMLAnchorElement).hash!
-  ) as HTMLAnchorElement
+  ) as HTMLAnchorElement;
 
   if (el) {
     const removeTabIndex = () => {
-      el.removeAttribute('tabindex')
-      el.removeEventListener('blur', removeTabIndex)
-    }
-    el.setAttribute('tabindex', '-1')
-    el.addEventListener('blur', removeTabIndex)
-    el.focus()
-    window.scrollTo(0, 0)
+      el.removeAttribute("tabindex");
+      el.removeEventListener("blur", removeTabIndex);
+    };
+    el.setAttribute("tabindex", "-1");
+    el.addEventListener("blur", removeTabIndex);
+    el.focus();
+    window.scrollTo(0, 0);
   }
-}
+};
 </script>
 
 <template>
