@@ -55,6 +55,9 @@ export default defineComponent({
   height: 100%;
   /* overflow: hidden; */
   position: relative;
-  background-color: var(--bg-device);
+  /* background-color: var(--bg-device); */
+  /* background-color: rgba(255, 255, 255, 0); */
+  background-image: url(grid.svg);
+  /* mask-image: linear-gradient(180deg, white, rgba(255, 255, 255, 0)); */
 }
 </style>

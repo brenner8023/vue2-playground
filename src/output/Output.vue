@@ -47,9 +47,10 @@
           </DropdownMenu>
         </Dropdown>
         <!-- 设备模拟 -->
+
         <Dropdown class="item" @command="changeDeviceSizes">
           <span class="dropdown-btn">
-            <Icon icon="ic:round-devices" class="vcv-icon" />
+            <Icon icon="ic:outline-devices" class="vcv-icon" />
             <span class="more-text"> {{ deviceSizeSeleted }} </span>
             <Icon icon="ic:round-keyboard-arrow-down" class="vcv-icon" />
           </span>
@@ -84,6 +85,12 @@
         :height="deviceHeight"
         :disable-scaling="enabled"
       >
+        <!-- <VCVFlyout
+          class="item"
+          :button="deviceSizeSeleted"
+          :items="screenSizes"
+          @click-item="changeDeviceSizes"
+        /> -->
         <OutputContainer :code="sourceCode"></OutputContainer>
       </DeviceEmulation>
     </div>
@@ -92,13 +99,18 @@
 <script>
 import { Icon } from "@iconify/vue2";
 import Preview from "./Preview.vue";
+
+import { screenSizes } from "../settings/sysSetting";
 import sizes from "../settings/screen-sizes.json";
+
 import OutputContainer from "./output-container.vue";
 import Dropdown from "../dropdown/Dropdown.vue";
 import DropdownMenu from "../dropdown/DropdownMenu.vue";
 import DropdownItem from "../dropdown/DropdownItem.vue";
 import DeviceEmulation from "../vcv/DeviceEmulation.vue";
 import "../dropdown/dropdown.css";
+
+import VCVFlyout from "../components/VCVDropdown.vue";
 
 export default {
   inject: [
@@ -116,6 +128,7 @@ export default {
     DropdownItem,
     OutputContainer,
     DeviceEmulation,
+    // VCVFlyout,
   },
   props: {
     sourceCode: { type: String },
@@ -129,12 +142,14 @@ export default {
         top: "mdi:dock-top",
         right: "mdi:dock-right",
         left: "mdi:dock-left",
+        bottom: "mdi:dock-bottom",
       },
       dockSide: this.vcv.layoutName, // 默认"top",
 
       isShowCode: this.vcv.showCodeEditor,
 
       deviceSizes: sizes,
+      screenSizes: screenSizes,
       deviceSizeSeleted: "Default",
     };
   },
@@ -154,6 +169,9 @@ export default {
     changeDeviceSizes(cmd) {
       this.deviceSizeSeleted = cmd;
       console.log("changeDeviceSizes", this.deviceWidth, this.deviceHeight);
+    },
+    changeDeviceSizesNew(e) {
+      console.log("changeDeviceSizesNew", e);
     },
   },
   computed: {

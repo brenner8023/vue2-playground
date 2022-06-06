@@ -29,7 +29,7 @@ export default defineComponent({
     >
     <template v-for="item in config.nav">
       <VPNavBarMenuLink v-if="'link' in item" :item="item" :key="item.text" />
-      <VPNavBarMenuGroup v-else :item="item" :key="item.text" />
+      <VPNavBarMenuGroup v-else :item="item" :key="item.text + 'g'" />
     </template>
   </nav>
 </template>

@@ -8,7 +8,9 @@ import { useDebounceFn } from "@vueuse/core";
 import Locale from "../mixins/locale";
 import SplitPane from "./SplitPane.vue";
 
-import "../styles/tooltip.css";
+import "normalize.css";
+import "@examples/styles/index.css";
+// import "../styles/tooltip.css";
 
 export default {
   name: "CodeViewer",
