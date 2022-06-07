@@ -1,15 +1,12 @@
 <script>
-// import { debounce } from "throttle-debounce";
 import { useDebounceFn } from "@vueuse/core";
 import { genStyleInjectionCode } from "../utils/sfcParser/styleInjection";
 import { isEmpty, extend } from "../utils/util";
 import { addStylesClient } from "../utils/style-loader/addStylesClient";
-import Locale from "../mixins/locale";
 const compiler = require("vue-template-compiler");
 
 export default {
   name: "OutputContainer",
-  mixins: [Locale],
   inject: ["viewId", "errorHandler"],
   props: {
     code: { type: String },
@@ -31,8 +28,6 @@ export default {
     };
   },
   created() {
-    // console.log("op created");
-    // this.debounceErrorHandler = debounce(this.debounceDelay, this.errorHandler);
     this.debounceErrorHandler = useDebounceFn(
       this.errorHandler,
       this.debounceDelay
@@ -44,7 +39,6 @@ export default {
     if (!this.isCodeEmpty) {
       this.cprocess();
     }
-    // console.log("op mounted");
   },
   methods: {
     cprocess() {
@@ -104,9 +98,7 @@ export default {
     codeLint() {
       // 校验代码是否为空
       this.hasError = this.isCodeEmpty;
-      this.errorMessage = this.isCodeEmpty
-        ? this.t("el.error.emptyCode")
-        : null;
+      this.errorMessage = this.isCodeEmpty ? "代码不能为空！" : null;
       // 代码为空 跳出检查
       if (this.isCodeEmpty) return;
 
@@ -118,7 +110,7 @@ export default {
 
       this.hasError = isTemplateEmpty;
       this.errorMessage = isTemplateEmpty
-        ? this.t("el.error.noTemplate")
+        ? "代码格式错误，不存在 <template> ！"
         : null;
       // 代码为空 跳出检查
       if (this.isTemplateEmpty) return;

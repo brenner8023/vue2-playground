@@ -97,7 +97,7 @@ export default defineComponent({
 <style scoped>
 .vcv-dropdown {
   position: relative;
-  width: 200px;
+  width: 100px;
 }
 
 .vcv-dropdown:hover {
