@@ -1,11 +1,18 @@
 <script lang="ts">
-import { defineComponent } from "@vue/composition-api";
+import {
+  defineComponent,
+  onMounted,
+  onUpdated,
+  ref,
+  watch,
+} from "@vue/composition-api";
 
 import { useData } from "@examples/composables/config";
 import { useSidebar } from "@examples/composables/sidebar";
 
 import _VPContentPage from "./VPContentPage.vue";
 import _VPContentDoc from "./VPContentDoc.vue";
+import type { Route, RouteMeta } from "vue-router";
 
 export default defineComponent({
   components: {
@@ -13,10 +20,43 @@ export default defineComponent({
     VPContentDoc: _VPContentDoc as any,
   },
   setup(_, { root }) {
-    const { frontmatter } = useData();
-    const { hasSidebar } = useSidebar();
+    const hasSidebar = ref<boolean>(false);
+    const hasFooter = ref<boolean>(false);
+    const curRoute = ref<Route>();
+    // const { frontmatter } = useData();
+    // const { hasSidebar } = useSidebar();
+
+    onMounted(() => {
+      // console.log("onMounted root details--", root, root.$route);
+      const { hasSidebar: showSidebar, hasFooter: showFooter } = root.$route
+        .meta as RouteMeta;
+      hasSidebar.value = showSidebar;
+      hasFooter.value = showFooter;
+
+      console.log(hasSidebar);
+    });
+
+    watch(
+      () => root.$route,
+      (newValue, oldValue) => {
+        // console.log(
+        //   "watch root details--",
+        //   root.$route,
+        //   // root.$router,
+        //   newValue,
+        //   oldValue
+        // );
+        const { hasSidebar: showSidebar, hasFooter: showFooter } =
+          newValue.meta as RouteMeta;
+        hasSidebar.value = showSidebar;
+        hasFooter.value = showFooter;
+      },
+      { deep: true }
+    );
+
     return {
-      frontmatter,
+      // frontmatter,
+      hasFooter,
       hasSidebar,
       route: root.$route,
     };
@@ -29,18 +69,19 @@ export default defineComponent({
     <!-- <VPContentPage> </VPContentPage> -->
     <!-- <VPContentDoc :class="{ 'has-sidebar': hasSidebar }"> </VPContentDoc> -->
 
-    <VPNotFound v-if="route.path === 'VPNotFound'" />
-    <VPContentPage v-else-if="!!frontmatter.page">
-      <!-- <template #footer-before><slot name="footer-before" /></template>
-      <template #footer-after><slot name="footer-after" /></template> -->
-    </VPContentPage>
-    <VPContentDoc v-else :class="{ 'has-sidebar': hasSidebar }">
+    <!-- <VPNotFound v-if="route.path === 'VPNotFound'" /> -->
+    <!-- <VPContentPage v-else-if="!!frontmatter.page"> -->
+    <VPContentDoc v-if="!!hasSidebar" :class="{ 'has-sidebar': !!hasSidebar }">
       <!-- <template #content-top><slot name="content-top" /></template>
       <template #content-bottom><slot name="content-bottom" /></template>
       <template #aside-top><slot name="aside-top" /></template>
       <template #aside-mid><slot name="aside-mid" /></template>
       <template #aside-bottom><slot name="aside-bottom" /></template> -->
     </VPContentDoc>
+    <VPContentPage v-else :show-footer="hasFooter">
+      <!-- <template #footer-before><slot name="footer-before" /></template>
+      <template #footer-after><slot name="footer-after" /></template> -->
+    </VPContentPage>
   </div>
 </template>
 

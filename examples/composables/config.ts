@@ -36,7 +36,7 @@ export function useConfig() {
           items: [
             {
               text: "指南",
-              link: "/#/doc",
+              link: "/#/guide",
             },
             {
               text: "更新日志",
@@ -343,7 +343,7 @@ export function useData() {
           text: "MIT License",
           link: "https://opensource.org/licenses/MIT",
         },
-        copyright: "Copyright © 20201-present Andurils",
+        copyright: "Copyright © 2021-present Andurils",
       },
       sidebar: {
         "/guide/": [

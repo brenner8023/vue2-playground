@@ -1,7 +1,7 @@
 // markdown-it plugin for normalizing image source
 
 import MarkdownIt from "markdown-it";
-import { EXTERNAL_URL_RE } from "../../shared/shared";
+import { EXTERNAL_URL_RE } from "@examples/utils/utils";
 
 export const imagePlugin = (md: MarkdownIt) => {
   md.renderer.rules.image = (tokens, idx, options, env, self) => {

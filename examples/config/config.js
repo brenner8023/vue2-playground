@@ -5,18 +5,6 @@ module.exports = (async () => {
   return {
     ...base,
 
-    vite: {
-      ...base.vite,
-      build: {
-        minify: false,
-      },
-      resolve: {
-        alias: {
-          "@vue/theme": path.join(__dirname, "../../src"),
-        },
-      },
-    },
-
     lang: "en-US",
     title: "Vue.js",
     description: "Vue.js - The Progressive JavaScript Framework",

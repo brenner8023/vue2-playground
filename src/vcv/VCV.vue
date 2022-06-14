@@ -176,14 +176,14 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 .vue-repl {
   --bg: #fff;
   --bg-soft: #f8f8f8;
   --bg-device: rgb(233, 236, 239);
 
   --border: #ddd;
-  // --text-light: #888;
+  /* --text-light: #888; */
   --text-light: rgba(60, 60, 60, 1);
   --font-code: Menlo, Monaco, Consolas, "Courier New", monospace;
   --color-branding: #42b883;
@@ -202,7 +202,7 @@ export default {
   height: 100%;
   border: 1px solid var(--border);
   border-radius: 4px;
-  // transition: 0.3s linear border-color;
+  /* transition: 0.3s linear border-color; */
   transition: box-shadow 0.2s ease-out;
 }
 
@@ -211,7 +211,7 @@ export default {
   --bg-soft: #242424;
   --bg-device: rgb(45, 45, 45);
   --border: #383838;
-  // --text-light: #aaa;
+  /* --text-light: #aaa; */
   --text-light: rgba(252, 252, 252, 1);
   --color-branding: #42d392;
   --color-branding-dark: #89ddff;

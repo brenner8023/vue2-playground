@@ -3,6 +3,7 @@ import { defineComponent } from "@vue/composition-api";
 import { useConfig } from "@examples/composables/config";
 import _VPNavBarMenuLink from "./VPNavBarMenuLink.vue";
 import _VPNavBarMenuGroup from "./VPNavBarMenuGroup.vue";
+import { nav } from "@examples/settings/projectSetting";
 
 export default defineComponent({
   components: {
@@ -10,24 +11,20 @@ export default defineComponent({
     VPNavBarMenuGroup: _VPNavBarMenuGroup as any,
   },
   setup() {
-    const { config } = useConfig();
+    // const { config } = useConfig();
     return {
-      config,
+      nav,
     };
   },
 });
 </script>
 
 <template>
-  <nav
-    v-if="config.nav"
-    aria-labelledby="main-nav-aria-label"
-    class="VPNavBarMenu"
-  >
+  <nav v-if="nav" aria-labelledby="main-nav-aria-label" class="VPNavBarMenu">
     <span id="main-nav-aria-label" class="visually-hidden"
       >Main Navigation</span
     >
-    <template v-for="item in config.nav">
+    <template v-for="item in nav">
       <VPNavBarMenuLink v-if="'link' in item" :item="item" :key="item.text" />
       <VPNavBarMenuGroup v-else :item="item" :key="item.text + 'g'" />
     </template>

@@ -158,7 +158,11 @@ export default {
 <style lang="scss" scoped>
 .repl-outer {
   position: relative;
-  height: calc(100vh - 64px);
+  margin: 0 auto;
+  max-width: var(--vp-screen-max-width);
+
+  // height: calc(100vh - 64px);
+  height: calc(100vh - var(--vt-nav-height) - var(--vt-banner-height, 0px));
   --app-controls-h: 5.6rem;
   --pane-controls-h: 4.2rem;
   overflow: hidden;

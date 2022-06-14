@@ -1,19 +1,26 @@
 <script lang="ts">
-import { defineComponent } from "@vue/composition-api";
+import { defineComponent, onUpdated, ref, watch } from "@vue/composition-api";
 import { useData } from "@examples/composables/config";
 import _VPFooter from "./VPFooter.vue";
+import type { Route, RouteMeta } from "vue-router";
 
 export default defineComponent({
+  props: {
+    showFooter: {
+      type: Boolean,
+    },
+  },
   components: {
     VPFooter: _VPFooter as any,
   },
-  setup() {
-    const { frontmatter } = useData();
-    return {
-      frontmatter,
-    };
+  setup(props, context) {
+    return {};
   },
 });
+
+function onMounted(arg0: () => void) {
+  throw new Error("Function not implemented.");
+}
 </script>
 
 <template>
@@ -23,7 +30,7 @@ export default defineComponent({
     </main>
 
     <slot name="footer-before" />
-    <VPFooter v-if="frontmatter.isShowFooter !== false" />
+    <VPFooter v-if="!!showFooter" />
     <slot name="footer-after" />
   </div>
 </template>

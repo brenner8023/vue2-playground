@@ -21,21 +21,6 @@ import "element-ui/lib/theme-chalk/index.css";
 // 响应式布局断点的隐藏
 import "element-ui/lib/theme-chalk/display.css";
 
-// import "@examples/styles/base.css";
-// import "@examples/styles/variables.css";
-// import "@examples/styles/vt-switch.css";
-// import "@examples/styles/vt-switch-appearance.css";
-// import "@examples/styles/vt-social-link.css";
-// import "@examples/styles/vt-social-links.css";
-
-// import "@examples/styles/vt-flyout.css";
-// import "@examples/styles/vt-hamburger.css";
-// import "@examples/styles/vt-link.css";
-// import "@examples/styles/vt-menu.css";
-// import "@examples/styles/vt-menu-group.css";
-// import "@examples/styles/vt-menu-link.css";
-
-// import "@examples/styles/vt-box.css";
 // 公共样式
 import "@assets/styles/index.scss";
 // highlight主题
@@ -43,7 +28,6 @@ import "highlight.js/styles/a11y-dark.css";
 
 import "normalize.css";
 import "@examples/styles/index.css";
-// import "tailwindcss/tailwind.css";
 
 Vue.config.productionTip = false;
 Vue.use(VueCompostionAPI);

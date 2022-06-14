@@ -36,11 +36,9 @@ function dismiss() {
 
 <template>
   <div class="banner" v-if="open" @click="dismiss">
-    Vue 3 已经成为当前默认版本！
-    <a
-      href="https://blog.vuejs.org/posts/vue-3-as-the-new-default.html"
-      target="_blank"
-      >了解更多</a
+    newsletter 已上线！
+    <a href="https://www.getrevue.co/profile/vcvnewsletter" target="_blank"
+      >欢迎订阅</a
     >
   </div>
 </template>
@@ -64,7 +62,7 @@ html:not(.banner-dismissed) {
   text-align: center;
   font-size: 12px;
   font-weight: 600;
-  color: #fff;
+  color: var(--vt-c-white);
   background-color: var(--vt-c-blue);
 }
 
@@ -74,5 +72,11 @@ html:not(.banner-dismissed) {
 
 a {
   text-decoration: underline;
+  color: var(--vt-c-white);
+  transition: color 0.5s;
+}
+
+.dark a {
+  color: var(--vt-c-indigo);
 }
 </style>

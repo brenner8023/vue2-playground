@@ -1,14 +1,28 @@
-<script setup lang="ts">
-import { provide } from "@vue/composition-api";
+<script lang="ts">
+import { provide, defineComponent } from "@vue/composition-api";
 import { useNav } from "@examples/composables/nav";
 import { useSidebar } from "@examples/composables/sidebar";
-import VPNavBar from "./VPNavBar.vue";
-import VPNavScreen from "./VPNavScreen.vue";
+import _VPNavBar from "./VPNavBar.vue";
+import _VPNavScreen from "./VPNavScreen.vue";
 
-const { isScreenOpen, closeScreen, toggleScreen } = useNav();
-const { hasSidebar } = useSidebar();
+export default defineComponent({
+  components: {
+    VPNavBar: _VPNavBar as any,
+    VPNavScreen: _VPNavScreen as any,
+  },
+  setup(_, { root }) {
+    const { isScreenOpen, closeScreen, toggleScreen } = useNav();
+    const { hasSidebar } = useSidebar(root.$route);
+    provide("close-screen", closeScreen);
 
-provide("close-screen", closeScreen);
+    return {
+      hasSidebar,
+      isScreenOpen,
+      closeScreen,
+      toggleScreen,
+    };
+  },
+});
 </script>
 
 <template>

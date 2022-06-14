@@ -70,7 +70,7 @@ $primary-color: red;
   },
   render() {
     return (
-      <section class="examples">
+      <section class="home-examples">
         {this.codeList.map((item) => {
           return (
             <div class="example-wrapper">
@@ -97,9 +97,12 @@ $primary-color: red;
 </script>
 
 <style lang="scss" scoped>
-.examples {
-  margin-top: 20px;
-  margin-bottom: 15px;
+.home-examples {
+  margin: 0 auto;
+  padding: 2.5rem 0 2.75rem;
+  max-width: 960px;
+  color: var(--vt-c-text-2);
+
   .example-wrapper {
     margin-top: 40px;
 

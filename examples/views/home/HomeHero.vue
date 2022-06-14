@@ -5,7 +5,9 @@ export default defineComponent({ name: "HomeHero" });
 
 <template>
   <div class="home-hero">
-    <h1 class="tagline">Vue Code View</h1>
+    <h1 class="tagline">
+      <span class="accent">Vue Code View</span>
+    </h1>
     <p class="description">
       一个基于 Vue 2，在网页中实时编辑运行代码、预览效果的轻量级代码交互组件。
     </p>
@@ -29,7 +31,25 @@ export default defineComponent({ name: "HomeHero" });
           />
         </svg>
       </a>
-      <a class="demo" href="/repl">在线示例</a>
+      <a class="demo" href="/repl"
+        >在线示例
+        <svg
+          class="icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 100 100"
+          width="15"
+          height="15"
+        >
+          <path
+            fill="currentColor"
+            d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"
+          />
+          <polygon
+            fill="currentColor"
+            points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"
+          />
+        </svg>
+      </a>
     </p>
   </div>
 </template>
@@ -84,7 +104,8 @@ export default defineComponent({ name: "HomeHero" });
   margin-right: 18px;
 }
 
-.actions .icon {
+.actions .icon,
+.demo .icon {
   display: inline;
   position: relative;
   top: -1px;
@@ -104,7 +125,8 @@ export default defineComponent({ name: "HomeHero" });
   transition-duration: 0.2s;
 }
 
-.actions .get-started:hover .icon {
+.actions .get-started:hover .icon,
+.actions .demo:hover .icon {
   transform: translateX(2px);
 }
 

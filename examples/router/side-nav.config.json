@@ -2,8 +2,8 @@
   "zh-CN": [
     {
       "title": "组件概述",
-      "name": "overview",
-      "path": "/overview",
+      "name": "introduction",
+      "path": "/introduction",
       "componentPath": "docs/zh-CN/overview.md"
     },
     {

@@ -27,7 +27,7 @@ export default defineComponent({
       isOpen: isSidebarOpen,
       open: openSidebar,
       close: closeSidebar,
-    } = useSidebar();
+    } = useSidebar(root.$route);
 
     // https://stackoverflow.com/questions/53126710/how-to-get-current-name-of-route-in-vue
     let triggerElement: HTMLButtonElement | undefined;

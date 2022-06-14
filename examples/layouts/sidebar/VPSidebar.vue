@@ -18,7 +18,7 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props) {
+  setup(props, { root }) {
     //  Focus Nav element when menu has opened
     let navEl = ref<(Element & { focus(): void }) | null>(null);
 
@@ -28,7 +28,7 @@ export default defineComponent({
         navEl.value?.focus();
       }
     });
-    const { sidebar, hasSidebar } = useSidebar();
+    const { sidebar, hasSidebar } = useSidebar(root.$route);
 
     return {
       sidebar,

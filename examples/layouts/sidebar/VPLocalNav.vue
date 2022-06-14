@@ -12,8 +12,8 @@ export default defineComponent({
   props: {
     open: Boolean,
   },
-  setup(props) {
-    const { hasSidebar } = useSidebar();
+  setup(props, { root }) {
+    const { hasSidebar } = useSidebar(root.$route);
     const { frontmatter } = useData();
     const scrollToTop = () => {
       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
