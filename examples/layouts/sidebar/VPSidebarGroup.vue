@@ -20,12 +20,13 @@ export default defineComponent({
       // required: true,
     },
   },
-  setup(props) {
-    const { page } = useData();
+  setup(props, { root }) {
+    const page = root.$route;
+    // const { page } = useData();
 
     const hasActiveLink = () => {
-      const { relativePath } = page;
-      return props.items?.some((item) => isActive(relativePath, item.link));
+      const { path } = page;
+      return props.items?.some((item) => isActive(path.slice(1), item.link));
     };
 
     return {
@@ -45,8 +46,8 @@ export default defineComponent({
       </h2>
     </div>
 
-    <template v-for="item in items">
-      <VPSidebarLink :item="item" :key="item.link" />
+    <template>
+      <VPSidebarLink v-for="item in items" :item="item" :key="item.link" />
     </template>
   </section>
 </template>

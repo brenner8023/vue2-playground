@@ -11,8 +11,9 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props) {
-    const { page } = useData();
+
+  setup(_, { root }) {
+    const page = root.$route;
     const closeSideBar = inject("close-sidebar") as () => void;
 
     return {
@@ -25,9 +26,9 @@ export default defineComponent({
 </script>
 
 <template>
-  <!-- :href="item.link" -->
   <a
-    :class="{ link: true, active: isActive(page.relativePath, item.link) }"
+    :class="{ link: true, active: isActive(page.path.slice(1), item.link) }"
+    :href="item.link"
     @click="closeSideBar"
   >
     <p class="link-text">{{ item.text }}</p>

@@ -65,22 +65,26 @@ export default defineComponent({
 </script>
 
 <template>
-  <div id="VPContent" class="VPContent">
+  <div
+    id="VPContent"
+    class="VPContent"
+    :class="{ 'has-sidebar': !!hasSidebar }"
+  >
     <!-- <VPContentPage> </VPContentPage> -->
     <!-- <VPContentDoc :class="{ 'has-sidebar': hasSidebar }"> </VPContentDoc> -->
 
     <!-- <VPNotFound v-if="route.path === 'VPNotFound'" /> -->
     <!-- <VPContentPage v-else-if="!!frontmatter.page"> -->
     <VPContentDoc v-if="!!hasSidebar" :class="{ 'has-sidebar': !!hasSidebar }">
-      <!-- <template #content-top><slot name="content-top" /></template>
+      <template #content-top><slot name="content-top" /></template>
       <template #content-bottom><slot name="content-bottom" /></template>
       <template #aside-top><slot name="aside-top" /></template>
       <template #aside-mid><slot name="aside-mid" /></template>
-      <template #aside-bottom><slot name="aside-bottom" /></template> -->
+      <template #aside-bottom><slot name="aside-bottom" /></template>
     </VPContentDoc>
     <VPContentPage v-else :show-footer="hasFooter">
-      <!-- <template #footer-before><slot name="footer-before" /></template>
-      <template #footer-after><slot name="footer-after" /></template> -->
+      <template #footer-before><slot name="footer-before" /></template>
+      <template #footer-after><slot name="footer-after" /></template>
     </VPContentPage>
   </div>
 </template>

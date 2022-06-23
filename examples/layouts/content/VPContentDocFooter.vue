@@ -9,20 +9,25 @@ import { isActive, normalizeLink } from "@examples/utils/utils";
 
 import { MenuItemWithLink } from "@examples/types/menu";
 import { SidebarGroup } from "@examples/types/config";
+import { sidebarConfig } from "@examples/settings/projectSetting";
 
 export default defineComponent({
   components: {
     VCVIconChevronLeft,
     VCVIconChevronRight,
   },
-  setup() {
-    const { page, theme } = useData();
+  setup(_, { root }) {
+    const page = root.$route;
+    const { theme } = useData();
 
     const links = computed(() => {
-      const sidebar = getSidebar(theme.sidebar, page.relativePath);
+      const sidebar = getSidebar(sidebarConfig, page.path);
+
       const candidates = getFlatSideBarLinks(sidebar);
+
+      console.log("VPContentDocFooter", candidates, sidebar);
       const index = candidates.findIndex((link) =>
-        isActive(page.relativePath, link.link)
+        isActive(page.path.slice(1), link.link)
       );
       return {
         prev: candidates[index - 1],
@@ -52,21 +57,15 @@ export default defineComponent({
 
 <template>
   <footer v-if="links.prev || links.next" class="VPContentDocFooter">
-    <a
-      v-if="links.prev"
-      class="prev-link"
-      :href="normalizeLink(links.prev.link)"
-    >
+    <!-- :href="normalizeLink(links.prev.link)" -->
+    <a v-if="links.prev" class="prev-link" :href="links.prev.link">
       <span class="desc"
         ><VCVIconChevronLeft class="vt-link-icon" /> Previous</span
       >
       <span class="title">{{ links.prev.text }} </span>
     </a>
-    <a
-      v-if="links.next"
-      class="next-link"
-      :href="normalizeLink(links.next.link)"
-    >
+    <!-- :href="normalizeLink(links.next.link)" -->
+    <a v-if="links.next" class="next-link" :href="links.next.link">
       <span class="desc"
         >Next <VCVIconChevronRight class="vt-link-icon"
       /></span>

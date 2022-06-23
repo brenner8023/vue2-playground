@@ -13,8 +13,8 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props) {
-    const { page } = useData();
+  setup(_, { root }) {
+    const page = root.$route;
     return {
       page,
       isActive,
@@ -27,7 +27,7 @@ export default defineComponent({
   <VCVFlyout
     :class="{
       VPNavBarMenuGroup: true,
-      active: isActive(page.relativePath, item.activeMatch, true),
+      active: isActive(page.path.slice(1), item.activeMatch, true),
     }"
     :button="item.text"
     :items="item.items"

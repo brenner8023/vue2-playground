@@ -81,10 +81,10 @@ new Vue({
 ## API
 
 ### Attributes
-
-| 参数          | 说明                         | 类型              | 默认值 | 版本 |
+  
+| Property      | Description                  | Type              | Default | Version |
 | ------------- | ---------------------------- | ----------------- | ------ | ---- |
-| themeMode         | code editor theme mode,default `light`  | `` \| `dark` | `` |      |
+| themeMode     | code editor theme mode,default `light`  | `` \| `dark` | `` |      |
 | showCode      | show the code editor ,  only  `layout` value is `top` takes effect          | boolean           | false  |      |
 | source        | source code               | string            | -      |      |
 | layout        | render view layout             |  `top` \| `right`  \| `left`  | `top` | `0.4.0` |

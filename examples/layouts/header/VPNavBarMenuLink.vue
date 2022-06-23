@@ -13,8 +13,9 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props) {
-    const { page } = useData();
+  setup(_, { root }) {
+    const page = root.$route;
+    // const { page } = useData();
     return {
       page,
       isActive,
@@ -28,7 +29,7 @@ export default defineComponent({
     :class="{
       VPNavBarMenuLink: true,
       active: isActive(
-        page.relativePath,
+        page.path.slice(1),
         item.activeMatch || item.link,
         !!item.activeMatch
       ),

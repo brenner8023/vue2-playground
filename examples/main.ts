@@ -45,7 +45,7 @@ Vue.component("demo-block", DemoBlock);
 // pinia.use(createPersistedState()); //开启缓存，存储在localstorage
 
 const router = new VueRouter({
-  mode: "hash", // 'hash' | 'history'
+  mode: "history", // 'hash' | 'history'
   base: process.env.BASE_URL,
   // base: __dirname,
   routes,
